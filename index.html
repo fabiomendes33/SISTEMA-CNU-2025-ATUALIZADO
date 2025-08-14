@@ -29085,6 +29085,1176 @@
     "hint": "Pense em uma liderança baseada em uma 'transação': desempenho em troca de recompensa.",
     "feedbackCompleto": "A Liderança Transacional é caracterizada pela troca entre líder e liderados. O líder define metas e expectativas e utiliza um sistema de recompensas (bônus, promoção) e punições para motivar a equipe a alcançar os resultados. É um estilo focado na gestão e no cumprimento de tarefas.",
     "subjects": ["rh", "gestao"]
+  },
+  {
+    "question": "A negação da proposição 'O processo é rápido e o servidor é eficiente' é:",
+    "options": [
+      "O processo não é rápido e o servidor não é eficiente.",
+      "O processo é rápido ou o servidor é eficiente.",
+      "O processo não é rápido ou o servidor não é eficiente.",
+      "Se o processo não é rápido, então o servidor não é eficiente."
+    ],
+    "answer": 2,
+    "hint": "Lembre-se das Leis de De Morgan: a negação de 'P e Q' é 'não P ou não Q'.",
+    "feedbackCompleto": "A negação de uma proposição conjuntiva (P ∧ Q) é a disjunção das negações de cada parte (~P ∨ ~Q). Portanto, a negação de 'O processo é rápido E o servidor é eficiente' é 'O processo NÃO é rápido OU o servidor NÃO é eficiente'.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Considere a proposição: 'Se Ana é analista, então Beto é técnico'. Qual proposição é logicamente equivalente a ela?",
+    "options": [
+      "Se Beto é técnico, então Ana é analista.",
+      "Se Ana não é analista, então Beto não é técnico.",
+      "Ana é analista e Beto não é técnico.",
+      "Se Beto não é técnico, então Ana não é analista."
+    ],
+    "answer": 3,
+    "hint": "Uma condicional (Se P, então Q) é sempre equivalente à sua contrapositiva (Se não Q, então não P).",
+    "feedbackCompleto": "A equivalência de uma proposição condicional (P → Q) é a sua contrapositiva (~Q → ~P). Na proposição dada, P = 'Ana é analista' e Q = 'Beto é técnico'. A contrapositiva é a negação de Q implicando a negação de P, ou seja: 'Se Beto não é técnico, então Ana não é analista'.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Em uma repartição, 30% dos servidores são homens. Se há 140 servidoras mulheres, qual o número total de servidores?",
+    "options": [
+      "180",
+      "200",
+      "240",
+      "280"
+    ],
+    "answer": 1,
+    "hint": "Se 30% são homens, então 70% são mulheres. As 140 mulheres correspondem a 70% do total.",
+    "feedbackCompleto": "Se 30% do total (T) são homens, então a porcentagem de mulheres é 100% - 30% = 70%. Sabemos que 70% de T é igual a 140. Matematicamente: 0,70 * T = 140. Para achar o total, T = 140 / 0,70. Portanto, T = 200. O número total de servidores é 200.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Qual é o próximo termo da sequência lógica: 5, 6, 8, 11, 15, ...?",
+    "options": [
+      "19",
+      "20",
+      "21",
+      "22"
+    ],
+    "answer": 1,
+    "hint": "Observe a diferença entre os números consecutivos.",
+    "feedbackCompleto": "A lógica da sequência é somar um número incremental a cada passo. Do 5 para o 6, soma-se +1. Do 6 para o 8, soma-se +2. Do 8 para o 11, soma-se +3. Do 11 para o 15, soma-se +4. Portanto, o próximo passo é somar +5. 15 + 5 = 20.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Se a afirmação 'Nenhum gestor é desorganizado' é falsa, então é verdade que:",
+    "options": [
+      "Todo gestor é desorganizado.",
+      "Algum gestor não é desorganizado.",
+      "Todo gestor é organizado.",
+      "Pelo menos um gestor é desorganizado."
+    ],
+    "answer": 3,
+    "hint": "Qual é a negação de 'Nenhum A é B'?",
+    "feedbackCompleto": "A negação de uma proposição universal negativa ('Nenhum A é B') é uma proposição particular afirmativa ('Algum A é B'). Se a afirmação 'Nenhum gestor é desorganizado' é falsa, sua negação deve ser verdadeira. Portanto, é verdade que 'Pelo menos um gestor é desorganizado' (ou 'Algum gestor é desorganizado').",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Um capital de R$ 1.000,00 foi aplicado a juros simples de 2% ao mês. Qual será o montante após 5 meses?",
+    "options": [
+      "R$ 1.100,00",
+      "R$ 1.104,08",
+      "R$ 1.200,00",
+      "R$ 2.000,00"
+    ],
+    "answer": 0,
+    "hint": "A fórmula dos juros simples é J = C * i * t. O montante é C + J.",
+    "feedbackCompleto": "Primeiro, calculamos os juros: J = C * i * t = 1000 * 0,02 * 5 = R$ 100,00. O montante (M) é o capital inicial mais os juros: M = C + J = 1000 + 100 = R$ 1.100,00.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "A negação da proposição 'Eu vou estudar OU vou sair' é:",
+    "options": [
+      "Eu não vou estudar E não vou sair.",
+      "Eu não vou estudar OU não vou sair.",
+      "Se eu não estudar, então vou sair.",
+      "Eu vou estudar E vou sair."
+    ],
+    "answer": 0,
+    "hint": "Use as Leis de De Morgan: a negação de 'P ou Q' é 'não P e não Q'.",
+    "feedbackCompleto": "Para negar uma disjunção (OU), nega-se cada uma das proposições e troca-se o conectivo por uma conjunção (E). A negação de 'Eu vou estudar' é 'Eu não vou estudar'. A negação de 'vou sair' é 'não vou sair'. Portanto, a negação completa é 'Eu não vou estudar E não vou sair'.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Todo carioca é brasileiro. João não é brasileiro. Logo, João:",
+    "options": [
+      "É carioca.",
+      "Não é carioca.",
+      "Pode ser carioca.",
+      "É paulista."
+    ],
+    "answer": 1,
+    "hint": "Use a lógica do Modus Tollens ou a contrapositiva da primeira premissa.",
+    "feedbackCompleto": "Este é um silogismo válido. Se a premissa 'Todo carioca é brasileiro' é verdadeira, sua contrapositiva 'Se alguém não é brasileiro, então não é carioca' também é. Como João não é brasileiro (premissa menor), a conclusão necessária é que João não é carioca.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Qual o valor de X na sequência: 81, 27, 9, 3, X?",
+    "options": [
+      "1",
+      "0",
+      "1/3",
+      "-1"
+    ],
+    "answer": 0,
+    "hint": "Esta é uma progressão geométrica em que cada termo é dividido por um número constante.",
+    "feedbackCompleto": "A sequência é uma progressão geométrica de razão 1/3 (cada termo é o anterior dividido por 3). 81 / 3 = 27; 27 / 3 = 9; 9 / 3 = 3. Portanto, o próximo termo é 3 / 3 = 1.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "A proposição 'Não é verdade que o servidor é novo e o processo é antigo' é logicamente equivalente a:",
+    "options": [
+      "O servidor não é novo e o processo não é antigo.",
+      "O servidor é novo ou o processo é antigo.",
+      "Se o servidor é novo, então o processo é antigo.",
+      "O servidor não é novo ou o processo não é antigo."
+    ],
+    "answer": 3,
+    "hint": "'Não é verdade que...' significa a negação de toda a proposição. Aplique as Leis de De Morgan.",
+    "feedbackCompleto": "A frase 'Não é verdade que (P e Q)' é a negação da conjunção, que, pelas Leis de De Morgan, é equivalente à disjunção das negações (~P ou ~Q). Portanto, é equivalente a 'O servidor não é novo OU o processo não é antigo'.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Uma impressora imprime 20 páginas por minuto. Quantas páginas ela imprime em 1 hora e 15 minutos?",
+    "options": [
+      "135",
+      "1500",
+      "1800",
+      "2015"
+    ],
+    "answer": 1,
+    "hint": "Primeiro, converta o tempo total para minutos.",
+    "feedbackCompleto": "Primeiro, converta o tempo para minutos: 1 hora = 60 minutos. Então, o tempo total é 60 + 15 = 75 minutos. Agora, multiplique o tempo pela velocidade de impressão: 75 minutos * 20 páginas/minuto = 1500 páginas.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Se P e Q são proposições, a tabela-verdade da proposição 'P → Q' é falsa apenas quando:",
+    "options": [
+      "P é verdadeiro e Q é verdadeiro.",
+      "P é falso e Q é falso.",
+      "P é verdadeiro e Q é falso.",
+      "P é falso e Q é verdadeiro."
+    ],
+    "answer": 2,
+    "hint": "Lembre-se da única linha que torna a condicional falsa (a 'promessa quebrada').",
+    "feedbackCompleto": "A proposição condicional P → Q só é falsa em um único caso: quando a premissa (antecedente P) é verdadeira e a conclusão (consequente Q) é falsa. Em todos os outros casos, a condicional é considerada verdadeira.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "A quantidade de anagramas da palavra 'CONCURSO' é:",
+    "options": [
+      "40.320",
+      "20.160",
+      "10.080",
+      "5.040"
+    ],
+    "answer": 2,
+    "hint": "Trata-se de uma permutação com repetição. A fórmula é n! / (n1! * n2! * ...).",
+    "feedbackCompleto": "A palavra 'CONCURSO' tem 8 letras no total. As letras C e O se repetem 2 vezes cada uma. A fórmula para permutação com repetição é P = n! / (n1! * n2!). Portanto, P = 8! / (2! * 2!) = 40320 / (2 * 2) = 40320 / 4 = 10.080.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Dizer que 'É falso que todo servidor é concursado' é o mesmo que dizer que:",
+    "options": [
+      "Nenhum servidor é concursado.",
+      "Todo servidor não é concursado.",
+      "Pelo menos um servidor é concursado.",
+      "Pelo menos um servidor não é concursado."
+    ],
+    "answer": 3,
+    "hint": "Esta questão pede a equivalência da negação de uma proposição universal.",
+    "feedbackCompleto": "A expressão 'É falso que...' é o mesmo que a negação da proposição seguinte. A negação de 'Todo servidor é concursado' (universal afirmativa) é 'Pelo menos um servidor não é concursado' (particular negativa).",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Numa equipe de 5 pessoas, de quantas maneiras diferentes podemos formar uma comissão de 3 pessoas?",
+    "options": [
+      "10",
+      "15",
+      "20",
+      "60"
+    ],
+    "answer": 0,
+    "hint": "A ordem das pessoas na comissão não importa, então use a fórmula da Combinação Simples: C(n, p) = n! / (p! * (n-p)!).",
+    "feedbackCompleto": "Como a ordem de escolha não importa, trata-se de um problema de Combinação. A fórmula é C(n, p) = n! / (p! * (n-p)!). Substituindo os valores: C(5, 3) = 5! / (3! * (5-3)!) = 5! / (3! * 2!) = (5*4*3*2*1) / ((3*2*1) * (2*1)) = 120 / (6 * 2) = 120 / 12 = 10. Existem 10 maneiras diferentes.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Se o preço de um produto aumenta de R$ 80,00 para R$ 100,00, qual foi o percentual de aumento?",
+    "options": [
+      "20%",
+      "25%",
+      "12,5%",
+      "125%"
+    ],
+    "answer": 1,
+    "hint": "Calcule o valor do aumento (preço final - preço inicial) e depois divida esse valor pelo preço inicial.",
+    "feedbackCompleto": "O valor do aumento foi de R$ 100,00 - R$ 80,00 = R$ 20,00. Para encontrar o percentual, dividimos o valor do aumento pelo valor inicial e multiplicamos por 100: (20 / 80) * 100. Simplificando, 20/80 é o mesmo que 1/4, que é 0,25. Multiplicando por 100, temos 25%.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "A afirmação 'Se estudo, então passo' é logicamente equivalente a:",
+    "options": [
+      "Se passo, então estudo.",
+      "Estudo e não passo.",
+      "Não estudo ou passo.",
+      "Se não estudo, então não passo."
+    ],
+    "answer": 2,
+    "hint": "Lembre-se da equivalência da condicional: P → Q é o mesmo que ~P ∨ Q.",
+    "feedbackCompleto": "Uma proposição condicional 'Se P, então Q' possui duas equivalências principais: a contrapositiva ('Se não Q, então não P') e a disjuntiva ('Não P ou Q'). A opção C corresponde a esta segunda equivalência.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Qual a negação da proposição 'Nenhum servidor público é preguiçoso'?",
+    "options": [
+      "Todo servidor público é preguiçoso.",
+      "Algum servidor público не é preguiçoso.",
+      "Algum servidor público é preguiçoso.",
+      "Nenhum servidor público não é preguiçoso."
+    ],
+    "answer": 2,
+    "hint": "A negação de uma proposição universal negativa ('Nenhum A é B') é uma proposição particular afirmativa ('Algum A é B').",
+    "feedbackCompleto": "A negação de 'Nenhum servidor público é preguiçoso' é 'Algum servidor público é preguiçoso'. Se a primeira proposição é falsa, então deve haver pelo menos um servidor público que é preguiçoso. A negação de uma proposição universal negativa é uma proposição particular afirmativa.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Se A e B são proposições, a proposição 'A ou B' é FALSA. O que se pode concluir?",
+    "options": [
+      "A é verdadeira e B é falsa.",
+      "A é falsa ou B é falsa.",
+      "A é falsa e B é falsa.",
+      "A é verdadeira e B é verdadeira."
+    ],
+    "answer": 2,
+    "hint": "Para uma disjunção ('ou') ser falsa, todas as proposições envolvidas devem ser falsas.",
+    "feedbackCompleto": "Na lógica proposicional, uma proposição disjuntiva ('A ou B') só é falsa se ambas as proposições (A e B) forem falsas. Em todos os outros casos (se pelo menos uma delas for verdadeira), a disjunção é verdadeira.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Qual a negação da proposição 'Se eu estudar, então eu passarei no concurso'?",
+    "options": [
+      "Eu não estudei e não passei no concurso.",
+      "Eu estudei e não passei no concurso.",
+      "Se eu não estudar, então não passarei no concurso.",
+      "Ou eu não estudo, ou eu passo no concurso."
+    ],
+    "answer": 1,
+    "hint": "A negação de uma condicional (P → Q) é uma conjunção (P ∧ ¬Q).",
+    "feedbackCompleto": "A negação da proposição condicional 'Se P, então Q' é a proposição 'P e não Q'. Portanto, a negação de 'Se eu estudar (P), então eu passarei no concurso (Q)' é 'Eu estudei (P) e eu não passarei no concurso (não Q)'.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Qual a sequência lógica: 1, 4, 9, 16, 25, ...?",
+    "options": [
+      "30",
+      "36",
+      "49",
+      "50"
+    ],
+    "answer": 1,
+    "hint": "Pense nos quadrados dos números naturais.",
+    "feedbackCompleto": "A sequência é formada pelos quadrados dos números naturais: 1², 2², 3², 4², 5². O próximo número é 6² = 36.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Qual a negação da proposição 'Existe um gato preto e todos os pássaros voam'?",
+    "options": [
+      "Existe um gato preto e algum pássaro não voa.",
+      "Não existe um gato preto ou algum pássaro não voa.",
+      "Não existe um gato preto ou todos os pássaros não voam.",
+      "Não existe um gato preto e todos os pássaros não voam."
+    ],
+    "answer": 1,
+    "hint": "Use as Leis de De Morgan: ¬(P ∧ Q) ⇔ ¬P ∨ ¬Q.",
+    "feedbackCompleto": "A negação de 'P e Q' é 'não P ou não Q'. A negação de 'Existe um gato preto' é 'Não existe um gato preto'. A negação de 'Todos os pássaros voam' é 'Algum pássaro não voa'. A resposta correta é 'Não existe um gato preto ou algum pássaro não voa'.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Se A é mais leve que B, e C é mais pesado que A, o que se pode concluir com certeza?",
+    "options": [
+      "B é mais leve que C.",
+      "A é mais pesado que C.",
+      "B é mais pesado que A.",
+      "Nenhuma conclusão pode ser tirada sobre C e B."
+    ],
+    "answer": 3,
+    "hint": "As relações de peso entre B e C não são definidas pelas premissas.",
+    "feedbackCompleto": "Temos A < B e C > A. Isso não nos dá nenhuma informação sobre a relação entre B e C. B pode ser mais leve, mais pesado ou ter o mesmo peso que C. Portanto, nenhuma conclusão pode ser tirada com certeza sobre C e B.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Considere a sequência de letras: B, D, F, H, ... Qual a próxima letra?",
+    "options": [
+      "I",
+      "J",
+      "K",
+      "L"
+    ],
+    "answer": 1,
+    "hint": "Pense nos saltos de duas letras no alfabeto.",
+    "feedbackCompleto": "A sequência salta uma letra do alfabeto a cada termo (B, C D, E F, G H). O próximo termo deve ser I e, portanto, a próxima letra na sequência é J.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Um artigo custava R$ 200,00. Teve um aumento de 20% e, em seguida, um desconto de 20% sobre o novo preço. Qual o preço final do artigo?",
+    "options": [
+      "R$ 200,00",
+      "R$ 204,00",
+      "R$ 192,00",
+      "R$ 180,00"
+    ],
+    "answer": 2,
+    "hint": "Lembre-se que um percentual de aumento e o mesmo de desconto, aplicados sucessivamente, sempre resultam em um valor menor que o inicial.",
+    "feedbackCompleto": "Preço inicial: R$ 200,00. Aumento de 20%: 200 * 1.20 = R$ 240,00. Desconto de 20% sobre o novo preço: 240 * 0.80 = R$ 192,00. O preço final é R$ 192,00.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Se a proposição 'A Terra é redonda ou o céu é azul' é FALSA, o que se pode concluir?",
+    "options": [
+      "A Terra não é redonda e o céu não é azul.",
+      "A Terra não é redonda ou o céu não é azul.",
+      "A Terra é redonda e o céu é azul.",
+      "Não há conclusões a serem tiradas."
+    ],
+    "answer": 0,
+    "hint": "Uma disjunção ('ou') só é falsa se ambas as proposições forem falsas.",
+    "feedbackCompleto": "A proposição 'A Terra é redonda ou o céu é azul' é uma disjunção. Para que ela seja falsa, ambas as proposições ('A Terra é redonda' e 'o céu é azul') devem ser falsas. Portanto, a conclusão é que 'A Terra não é redonda e o céu não é azul'.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Se 3 impressoras imprimem 1200 páginas em 4 horas, quantas páginas 6 impressoras imprimiriam em 2 horas?",
+    "options": [
+      "600",
+      "800",
+      "1200",
+      "2400"
+    ],
+    "answer": 2,
+    "hint": "É uma regra de três composta. A quantidade de impressoras e o tempo são diretamente proporcionais ao número de páginas. Mas o número de impressoras é inversamente proporcional ao tempo de impressão.",
+    "feedbackCompleto": "Este problema pode ser resolvido com uma regra de três composta. Aumentar o número de impressoras aumenta o número de páginas, e diminuir o tempo de impressão diminui o número de páginas. A relação é diretamente proporcional entre 'impressoras' e 'páginas', e também entre 'horas' e 'páginas'. Então: (3/6) * (4/2) = 1200/x. Simplificando, 2/2 = 1200/x, portanto, x = 1200.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Qual a negação de 'Se está frio, então eu visto um casaco'?",
+    "options": [
+      "Não está frio e eu visto um casaco.",
+      "Está frio e eu não visto um casaco.",
+      "Se não está frio, então eu não visto um casaco.",
+      "Está frio ou eu não visto um casaco."
+    ],
+    "answer": 1,
+    "hint": "A negação de P → Q é P ∧ ¬Q.",
+    "feedbackCompleto": "A negação de uma proposição condicional 'Se P, então Q' é 'P e não Q'. P = 'está frio'; Q = 'eu visto um casaco'. A negação correta é 'Está frio e eu não visto um casaco'.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Considere a sequência: 1, 2, 4, 7, 11, ... Qual o próximo número?",
+    "options": [
+      "13",
+      "15",
+      "16",
+      "17"
+    ],
+    "answer": 2,
+    "hint": "Observe a diferença entre cada termo e o seu anterior.",
+    "feedbackCompleto": "A sequência tem um padrão de soma crescente: 1+1=2, 2+2=4, 4+3=7, 7+4=11. O próximo passo é somar 5. Portanto, 11+5=16.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "Se A > B e C < A, o que se pode concluir com certeza?",
+    "options": [
+      "C < B",
+      "A = C",
+      "B < C",
+      "Nenhuma conclusão pode ser tirada sobre B e C."
+    ],
+    "answer": 3,
+    "hint": "As premissas не estabelecem uma relação direta entre B e C.",
+    "feedbackCompleto": "Temos A > B e A > C. Isso significa que tanto B quanto C são menores que A. No entanto, não há informação sobre a relação de tamanho entre B e C. C pode ser maior, menor ou igual a B. Portanto, nenhuma conclusão pode ser tirada com certeza sobre B e C.",
+    "subjects": ["raciocinio-logico"]
+  },
+  {
+    "question": "No trecho 'Os desafios, que são constantes, exigem resiliência.', a oração 'que são constantes' é classificada como:",
+    "options": [
+      "Oração Subordinada Substantiva",
+      "Oração Subordinada Adjetiva Restritiva",
+      "Oração Subordinada Adjetiva Explicativa",
+      "Oração Coordenada Sindética"
+    ],
+    "answer": 2,
+    "hint": "A presença de vírgulas e a natureza da oração (que apenas adiciona uma informação, sem restringir) são pistas importantes.",
+    "feedbackCompleto": "A oração 'que são constantes' é introduzida pelo pronome relativo 'que' e está isolada por vírgulas, o que a caracteriza como uma oração subordinada adjetiva explicativa. Ela apenas adiciona uma informação sobre o termo antecedente 'Os desafios', sem restringir o seu sentido. Se não houvesse as vírgulas, seria restritiva.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Assinale a alternativa em que a regência verbal está de acordo com a norma-padrão.",
+    "options": [
+      "Ele assistiu o filme no cinema.",
+      "Nós o assistimos no cinema.",
+      "Ele assistiu ao filme no cinema.",
+      "O médico assistiu o paciente com presteza."
+    ],
+    "answer": 2,
+    "hint": "Lembre-se da regência do verbo 'assistir' no sentido de 'ver'.",
+    "feedbackCompleto": "O verbo 'assistir' no sentido de 'ver, presenciar' é transitivo indireto e exige a preposição 'a'. O correto é 'assistiu ao filme'. Já no sentido de 'prestar assistência' (opção D), ele é transitivo direto e está corretamente empregado sem preposição.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "No trecho 'Apesar de a economia apresentar sinais de recuperação, o desemprego persiste alto.', a oração 'Apesar de a economia apresentar sinais de recuperação' expressa uma ideia de:",
+    "options": [
+      "Causa",
+      "Condição",
+      "Concessão",
+      "Consequência"
+    ],
+    "answer": 2,
+    "hint": "Conjunções como 'apesar de', 'ainda que', 'embora' introduzem um tipo de oração que expressa um contraste não impeditivo da ação principal.",
+    "feedbackCompleto": "A locução conjuntiva 'apesar de' introduz uma oração subordinada adverbial concessiva, que expressa uma circunstância contrária à da oração principal, mas que não impede sua realização. O fato de a economia se recuperar não impede que o desemprego persista alto.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Assinale a frase em que o termo 'onde' está empregado corretamente.",
+    "options": [
+      "Essa é a situação onde discordo.",
+      "Onde o funcionário trabalha, há muita colaboração.",
+      "Não sei onde ele se refere em seu discurso.",
+      "Aquela é a causa onde tudo começou."
+    ],
+    "answer": 1,
+    "hint": "Lembre-se que 'onde' é um advérbio de lugar e só deve ser utilizado quando se referir a um local físico, sendo substituível por 'em que lugar'.",
+    "feedbackCompleto": "Apenas na frase 'Onde o funcionário trabalha...', o 'onde' indica um lugar físico (o local de trabalho do funcionário), estando, portanto, corretamente empregado. Nas outras frases, 'onde' foi usado em contextos que não indicam lugar físico, devendo ser substituído por 'em que', 'na qual', 'pela qual', etc.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual a alternativa em que a concordância verbal está CORRETA?",
+    "options": [
+      "Faz muitos anos que não o vejo.",
+      "Haviam muitas pessoas na fila.",
+      "Menos de um por cento dos votos foram anulados.",
+      "A maioria dos estudantes compareceu ao evento."
+    ],
+    "answer": 0,
+    "hint": "O verbo 'fazer' no sentido de tempo decorrido é impessoal e fica no singular.",
+    "feedbackCompleto": "O verbo 'fazer' no sentido de tempo decorrido é impessoal, devendo permanecer no singular. A concordância está correta. As demais frases estão incorretas: 'Havia muitas pessoas' (verbo 'haver' no sentido de existir é impessoal); 'Menos de um por cento...' exige singular ('foi anulado'); e 'a maioria...' pode ter o verbo no singular (preferencial) ou no plural, mas 'A maioria dos estudantes compareceu...' é a forma mais precisa.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "No período 'Ele trabalha à medida que aprende.', a locução conjuntiva 'à medida que' expressa uma ideia de:",
+    "options": [
+      "Comparação",
+      "Tempo",
+      "Conformidade",
+      "Proporção"
+    ],
+    "answer": 3,
+    "hint": "Pense nas conjunções que indicam que uma coisa acontece 'na mesma proporção' ou 'ao mesmo tempo' que outra.",
+    "feedbackCompleto": "A locução conjuntiva 'à medida que' introduz uma oração subordinada adverbial proporcional, que expressa a ideia de que uma ação varia proporcionalmente à outra (o trabalho aumenta ou acontece na mesma proporção do aprendizado).",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Assinale a alternativa em que a palavra 'por que' está empregada corretamente.",
+    "options": [
+      "Você não veio por que?",
+      "Não sei por que ele faltou.",
+      "O motivo por que ela se atrasou é desconhecido.",
+      "Ele não estudou porquê estava cansado."
+    ],
+    "answer": 1,
+    "hint": "Lembre-se das quatro formas: separado sem acento (perguntas indiretas, por 'pelo qual'), separado com acento (final de frase), junto sem acento (causa), junto com acento (substantivo).",
+    "feedbackCompleto": "Na alternativa 'Não sei por que ele faltou', 'por que' está empregado corretamente, pois é uma pergunta indireta ou pode ser substituído por 'pelo qual motivo'. Nas demais: 'Você não veio por quê?' (final de frase, com acento); 'O motivo pelo qual ela se atrasou é desconhecido.' (o 'por que' pode ser substituído por 'pelo qual'); 'Ele não estudou porque estava cansado.' (junto e sem acento, indicando causa).",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual a classe gramatical da palavra 'se' em 'Não se fala mais nesse assunto.'?",
+    "options": [
+      "Pronome reflexivo",
+      "Conjunção integrante",
+      "Índice de indeterminação do sujeito",
+      "Partícula apassivadora"
+    ],
+    "answer": 2,
+    "hint": "Analise a transitividade do verbo acompanhado do 'se'. Se o verbo for transitivo indireto, intransitivo ou de ligação, o 'se' é índice de indeterminação do sujeito.",
+    "feedbackCompleto": "O verbo 'falar' (no sentido de 'ser o assunto') é transitivo indireto aqui ('fala-se em algo'). Quando um verbo transitivo indireto é acompanhado do 'se', ele indetermina o sujeito, ou seja, 'alguém fala', mas não se sabe quem, sendo a forma correta para indeterminação. A partícula apassivadora acompanha verbos transitivos diretos.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Em 'Ela estudou muito, portanto foi aprovada.', a conjunção destacada é:",
+    "options": [
+      "Aditiva",
+      "Adversativa",
+      "Explicativa",
+      "Conclusiva"
+    ],
+    "answer": 3,
+    "hint": "Pense no tipo de relação que a conjunção estabelece entre as duas orações: adição, oposição, alternância, explicação, ou conclusão.",
+    "feedbackCompleto": "A conjunção 'portanto' introduz uma oração coordenada sindética conclusiva, que expressa uma conclusão em relação à ideia anterior ('ela estudou muito', a conclusão é que 'foi aprovada').",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual das frases apresenta um ERRO de concordância nominal?",
+    "options": [
+      "Anexo seguem os documentos.",
+      "É proibido entrada de estranhos.",
+      "Ela estava meio cansada.",
+      "Bastantes pessoas compareceram."
+    ],
+    "answer": 1,
+    "hint": "Cuidado com expressões como 'é proibido' e 'é bom'. A presença de artigo muda a concordância.",
+    "feedbackCompleto": "A expressão 'É proibido' só concorda em gênero e número se o substantivo vier acompanhado de artigo ou pronome. O correto seria 'É proibida a entrada de estranhos'. As demais frases estão corretas: 'Anexo' concorda com 'documentos', 'meio' é advérbio de intensidade (invariável) e 'bastantes' concorda com 'pessoas' quando se refere a quantidade.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Em 'É necessário que todos colaborem.', a oração subordinada 'que todos colaborem' é classificada como oração subordinada substantiva:",
+    "options": [
+      "Objetiva Direta",
+      "Subjetiva",
+      "Completiva Nominal",
+      "Apositiva"
+    ],
+    "answer": 1,
+    "hint": "Tente substituir a oração por 'isso'. Se 'isso' funciona como sujeito, a oração é subjetiva.",
+    "feedbackCompleto": "A oração 'que todos colaborem' funciona como sujeito da oração principal 'É necessário'. Quando a oração subordinada substantiva exerce a função de sujeito, ela é classificada como subordinada substantiva subjetiva. Pode-se testar substituindo por 'Isso é necessário'.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual das frases está em voz passiva analítica?",
+    "options": [
+      "O aluno estuda a matéria.",
+      "A matéria é estudada pelo aluno.",
+      "Estudou-se a matéria.",
+      "O aluno se dedica aos estudos."
+    ],
+    "answer": 1,
+    "hint": "A voz passiva analítica é formada por um verbo auxiliar (ser/estar) + particípio passado do verbo principal + agente da passiva (opcional).",
+    "feedbackCompleto": "A voz passiva analítica é formada pelo verbo auxiliar 'ser' ou 'estar' + o particípio passado do verbo principal + (opcionalmente) o agente da passiva. 'A matéria é estudada pelo aluno' segue essa estrutura ('é estudada' e 'pelo aluno' como agente da passiva). 'Estudou-se a matéria' é voz passiva sintética.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Assinale a alternativa em que a regência nominal está CORRETA.",
+    "options": [
+      "Ele tinha aversão por mentiras.",
+      "Sou grato pelos seus conselhos.",
+      "Tenho certeza que ele virá.",
+      "Ele é passível à punição."
+    ],
+    "answer": 1,
+    "hint": "A regência nominal trata da relação entre um nome (substantivo, adjetivo, advérbio) e seu complemento, que geralmente é introduzido por uma preposição. 'Grato' rege 'por'.",
+    "feedbackCompleto": "O adjetivo 'grato' rege a preposição 'a' (grato a alguém) ou 'por' (grato por algo). 'Sou grato por seus conselhos' está correto. 'Aversão a' é o correto. 'Certeza de que' é o correto. 'Passível de' é o correto.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "No trecho 'O governo atua de maneira proativa, pois a gestão de riscos exige antecipação.', a palavra 'pois' introduz uma ideia de:",
+    "options": [
+      "Conclusão",
+      "Oposição",
+      "Explicação",
+      "Adição"
+    ],
+    "answer": 2,
+    "hint": "Pense na posição do 'pois' em relação ao verbo e a relação de sentido com a oração anterior.",
+    "feedbackCompleto": "A conjunção 'pois' antes do verbo ('a gestão de riscos exige') introduz uma oração coordenada sindética explicativa, que justifica ou elucida a afirmação anterior. 'O governo atua de maneira proativa' (isso acontece) porque 'a gestão de riscos exige antecipação' (essa é a explicação).",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual das frases a seguir apresenta um erro de grafia devido ao uso de 's' ou 'z'?",
+    "options": [
+      "Análise",
+      "Pesquisa",
+      "Civilização",
+      "Pretenzioso"
+    ],
+    "answer": 3,
+    "hint": "Muitas palavras com 's' ou 'z' vêm de verbos ou substantivos cognatos. Tente pensar na família da palavra.",
+    "feedbackCompleto": "A grafia correta é 'pretensioso', com 's', derivado de 'pretensão'. As demais palavras estão corretamente grafadas. (analiSAr -> análise; pesquiSAr -> pesquisa; civiLIZAr -> civilização).",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Em 'Ela era tão criativa, que todos a admiravam.', a conjunção 'que' introduz uma oração que expressa uma ideia de:",
+    "options": [
+      "Causa",
+      "Concessão",
+      "Consequência",
+      "Condição"
+    ],
+    "answer": 2,
+    "hint": "A presença do intensificador 'tão' antes do 'que' é uma pista forte para a classificação.",
+    "feedbackCompleto": "A oração é introduzida pela conjunção 'que' após o intensificador 'tão', o que indica uma oração subordinada adverbial consecutiva, que expressa um resultado ou efeito da intensidade da característica da oração principal (a criatividade dela era tanta que a consequência era a admiração de todos).",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual a classe gramatical do 'que' na frase: 'A responsabilidade é o fator que gera confiança.'?",
+    "options": [
+      "Conjunção",
+      "Preposição",
+      "Pronome relativo",
+      "Advérbio"
+    ],
+    "answer": 2,
+    "hint": "Tente substituir o 'que' por 'o qual', 'a qual', 'os quais', 'as quais'. Se a substituição for possível, ele é um pronome relativo.",
+    "feedbackCompleto": "O 'que' retoma o substantivo 'fator' e introduz uma oração subordinada adjetiva. Ele pode ser substituído por 'o qual' ('o fator o qual gera confiança'), confirmando sua função de pronome relativo.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual a alternativa em que a concordância verbal está INCORRETA?",
+    "options": [
+      "A maioria dos servidores compareceu à reunião.",
+      "Se for preciso, nós faremos.",
+      "Vende-se casas.",
+      "Fazem cinco anos que moramos aqui."
+    ],
+    "answer": 3,
+    "hint": "O verbo 'fazer' no sentido de tempo decorrido é impessoal e fica no singular. O erro está no plural.",
+    "feedbackCompleto": "O verbo 'fazer' no sentido de tempo decorrido é impessoal e deve ser usado sempre na terceira pessoa do singular. O correto seria 'Faz cinco anos que moramos aqui.'. As demais alternativas estão corretas: 'a maioria de' pode ter o verbo no singular; 'se for preciso' está correto; e 'vende-se casas' tem o 'se' como partícula apassivadora e o verbo concorda com o sujeito 'casas'.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual das frases apresenta um erro de crase?",
+    "options": [
+      "Ele se dedicou à empresa.",
+      "Fomos à Campinas no feriado.",
+      "O professor se referiu à aluna.",
+      "A reunião é das nove às dez."
+    ],
+    "answer": 1,
+    "hint": "Lembre-se da regra 'se volto da, crase há; se volto de, crase pra quê?' para nomes de cidades.",
+    "feedbackCompleto": "O erro está em 'Fomos à Campinas...'. Antes de nomes de cidades que não admitem o artigo 'a', não ocorre crase. Fazendo o teste, 'volto de Campinas', logo, não há crase. 'Volto da Bahia', por exemplo, logo, 'vou à Bahia'. As outras opções estão corretas, pois os verbos regem a preposição 'a' e o termo seguinte é feminino. O correto seria 'Fomos a Campinas...'.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual a alternativa em que a palavra destacada está CORRETAMENTE grafada?",
+    "options": [
+      "As pessoas esquecidas não se lembraram do evento.",
+      "O diretor era malevolente com os funcionários.",
+      "A exceção à regra foi bem explicada.",
+      "O governo teve um inclusivo plano social."
+    ],
+    "answer": 2,
+    "hint": "Cuidado com o uso de 's', 'c', 'ç' e 'ss'.",
+    "feedbackCompleto": "A grafia 'exceção' (com 'c' e 'ç') está correta no sentido de 'ato de excetuar'. As outras opções contêm erros: 'esquecidas' (esquecimento é com 'c' e 's'); 'malevolente' (mal + evolente); 'inclusivo' (inclusão é com 's').",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "O trecho 'Ele falou sobre o tema com muita propriedade, pois era especialista no assunto.' pode ser reescrito com a conjunção 'visto que', sem alteração de sentido. O 'pois' e 'visto que' expressam uma ideia de:",
+    "options": [
+      "Consequência",
+      "Causa",
+      "Finalidade",
+      "Conformidade"
+    ],
+    "answer": 1,
+    "hint": "Pense na justificativa do porquê ele falou com propriedade.",
+    "feedbackCompleto": "A conjunção 'pois' (antes do verbo) e a locução conjuntiva 'visto que' introduzem uma oração subordinada adverbial causal, que expressa a causa ou o motivo pelo qual o fato da oração principal aconteceu ('Ele falou com propriedade porque era especialista').",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual o significado da conjunção 'conquanto'?",
+    "options": [
+      "Desde que",
+      "Conforme",
+      "Embora",
+      "À medida que"
+    ],
+    "answer": 2,
+    "hint": "Pense no grupo de conjunções que expressam uma ideia de contraste ou ressalva sem impedir a ação principal.",
+    "feedbackCompleto": "A conjunção 'conquanto' é sinônimo de 'embora', 'ainda que', 'mesmo que', introduzindo uma oração subordinada adverbial concessiva (que indica uma oposição não impeditiva à ação principal).",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Assinale a alternativa em que a palavra destacada está INCORRETAMENTE grafada.",
+    "options": [
+      "A equipe teve um bom desempenho.",
+      "Ele se sentiu mal com a notícia.",
+      "Tivemos um sintoma estranho.",
+      "O excenso de peso preocupa."
+    ],
+    "answer": 3,
+    "hint": "Atenção aos casos de 'x', 'ss', 'sc' e 'c' em palavras de origem latina. O significado também pode ajudar na escolha.",
+    "feedbackCompleto": "A grafia correta é 'excesso', com 'ss', que indica quantidade que excede o normal ou o necessário. 'Excenso' está incorreta. As demais palavras ('desempenho', 'mal' [oposto de bem], 'sintoma') estão corretamente grafadas.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "No período 'Ele não só estudou, como também trabalhou duro.', as conjunções 'não só... como também' expressam uma ideia de:",
+    "options": [
+      "Oposição",
+      "Alternância",
+      "Conclusão",
+      "Adição"
+    ],
+    "answer": 3,
+    "hint": "Pense na função dos pares de conjunções que complementam ideias.",
+    "feedbackCompleto": "A locução conjuntiva 'não só... como também' é uma conjunção coordenada sindética aditiva, que expressa uma soma ou sequência de fatos ou ideias (ele estudou E, ADICIONALMENTE, trabalhou duro).",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual a função sintática do termo sublinhado em 'O candidato, muito experiente, foi aprovado.'?",
+    "options": [
+      "Adjunto Adnominal",
+      "Predicativo do Sujeito",
+      "Aposto Explicativo",
+      "Complemento Nominal"
+    ],
+    "answer": 2,
+    "hint": "Termos entre vírgulas que adicionam uma explicação ou detalhe sobre um termo anterior, sem ter função de oração subordinada, são geralmente apostos explicativos.",
+    "feedbackCompleto": "O termo 'muito experiente' entre vírgulas adiciona uma informação explicativa sobre o sujeito 'O candidato'. Essa função sintática é classificada como Aposto Explicativo. Não é adjunto adnominal (que não viria entre vírgulas neste caso), nem predicativo do sujeito (que exigiria um verbo de ligação), nem complemento nominal.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Em 'Ela agiu de modo que todos a admirassem.', a oração introduzida pela locução 'de modo que' expressa uma ideia de:",
+    "options": [
+      "Causa",
+      "Conformidade",
+      "Consequência",
+      "Condição"
+    ],
+    "answer": 2,
+    "hint": "Locuções conjuntivas como 'de modo que', 'de forma que', 'tão... que' são típicas de um tipo de oração que expressa um resultado.",
+    "feedbackCompleto": "A locução conjuntiva 'de modo que' (assim como 'de forma que', 'de sorte que', ou após um intensificador como 'tão... que') introduz uma oração subordinada adverbial consecutiva, que expressa um resultado ou efeito decorrente da ação da oração principal (a forma como ela agiu teve como consequência a admiração de todos).",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual a alternativa em que a palavra destacada está incorretamente grafada?",
+    "options": [
+      "Ele tinha receio de fracassar.",
+      "A discrepância entre os dados era grande.",
+      "Houve uma sessão de emergência.",
+      "Ele entregou a recisão do contrato."
+    ],
+    "answer": 3,
+    "hint": "Cuidado com o uso de 's', 'ss', 'c', 'ç', 'sc' e 'xc'. Muitos erros acontecem com esses grupos de letras.",
+    "feedbackCompleto": "A grafia correta é 'rescisão', com 'sc', que se refere ao ato de rescindir, ou seja, anular ou romper um contrato. 'Recisão' está incorreta. As demais palavras ('receio', 'discrepância', 'sessão') estão corretamente grafadas.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual das alternativas está de acordo com as regras de regência verbal?",
+    "options": [
+      "Eu me recordo de sua gentileza.",
+      "Ele implicou em uma confusão desnecessária.",
+      "Assistimos o filme ontem à noite.",
+      "Custou-lhe muito para aprender a matéria."
+    ],
+    "answer": 0,
+    "hint": "Atenção aos verbos que causam mais dúvidas, como 'preferir', 'implicar', 'assistir', 'aspirar', 'visar', 'esquecer/lembrar'.",
+    "feedbackCompleto": "A frase 'Eu me recordo de sua gentileza' está correta. O verbo 'recordar-se' é pronominal e rege a preposição 'de'. 'Ele implicou UMA confusão' (verbo 'implicar' no sentido de 'acarretar, envolver' é transitivo direto). 'Assistimos AO filme' (verbo 'assistir' no sentido de 'ver' é transitivo indireto, exige preposição 'a'). 'Custou-lhe muito aprender a matéria' (verbo 'custar' no sentido de 'ser difícil' é impessoal com sujeito oracional, a pessoa é objeto indireto, 'para' é dispensável, mas a regência principal é 'custar A alguém').",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual o significado da conjunção 'conquanto'?",
+    "options": [
+      "Desde que",
+      "Conforme",
+      "Embora",
+      "À medida que"
+    ],
+    "answer": 2,
+    "hint": "Pense no grupo de conjunções que expressam uma ideia de contraste ou ressalva sem impedir a ação principal.",
+    "feedbackCompleto": "A conjunção 'conquanto' é sinônimo de 'embora', 'ainda que', 'mesmo que', introduzindo uma oração subordinada adverbial concessiva (que indica uma oposição não impeditiva à ação principal).",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Assinale a alternativa em que a palavra destacada está INCORRETAMENTE grafada.",
+    "options": [
+      "A equipe teve um bom desempenho.",
+      "Ele se sentiu mal com a notícia.",
+      "Tivemos um sintoma estranho.",
+      "O excenso de peso preocupa."
+    ],
+    "answer": 3,
+    "hint": "Atenção aos casos de 'x', 'ss', 'sc' e 'c' em palavras de origem latina. O significado também pode ajudar na escolha.",
+    "feedbackCompleto": "A grafia correta é 'excesso', com 'ss', que indica quantidade que excede o normal ou o necessário. 'Excenso' está incorreta. As demais palavras ('desempenho', 'mal' [oposto de bem], 'sintoma') estão corretamente grafadas.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "No trecho 'A gestão pública exige transparência, ética, eficiência.', a relação entre os termos 'transparência', 'ética' e 'eficiência' é estabelecida por qual tipo de coordenação?",
+    "options": [
+      "Sindética Aditiva",
+      "Sindética Adversativa",
+      "Assindética",
+      "Sindética Explicativa"
+    ],
+    "answer": 2,
+    "hint": "Observe a ausência de conjunções (conectivos) entre os elementos da enumeração.",
+    "feedbackCompleto": "A coordenação é Assindética. As orações ou termos coordenados assindéticos são aqueles que estão justapostos, ligados apenas por uma vírgula, sem a presença de uma conjunção (como 'e', 'mas', 'ou').",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Assinale a alternativa em que a concordância verbal está INCORRETA.",
+    "options": [
+      "Fui eu quem paguei a conta.",
+      "Mais de um servidor se abraçaram após a aprovação.",
+      "Havia de existir outras saídas para a crise.",
+      "Os Estados Unidos influenciam a economia global."
+    ],
+    "answer": 2,
+    "hint": "Em locuções verbais com verbos impessoais, a impessoalidade se transmite ao verbo auxiliar.",
+    "feedbackCompleto": "O erro está na opção C. O verbo 'haver' no sentido de 'existir' é impessoal. Em uma locução verbal, ele transmite sua impessoalidade ao verbo auxiliar ('dever'), que também deve ficar no singular. O correto é: 'Devia haver outras saídas...'. As outras estão corretas: A ('quem paguei' ou 'quem pagou'); B (reciprocidade exige plural); D (nome de lugar no plural com artigo exige verbo no plural).",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Leia o texto: 'A inovação no setor público não é um luxo, mas uma necessidade imperativa. Em um mundo de recursos escassos e demandas crescentes, otimizar processos e entregar mais valor ao cidadão torna-se a única via sustentável.' Qual a tese central do autor?",
+    "options": [
+      "A inovação é um luxo que o setor público não pode pagar.",
+      "A inovação é crucial para a sustentabilidade da gestão pública diante dos desafios atuais.",
+      "O principal problema do setor público é a falta de recursos.",
+      "A otimização de processos é mais importante que a inovação."
+    ],
+    "answer": 1,
+    "hint": "Identifique a afirmação principal que o autor defende e justifica ao longo do trecho.",
+    "feedbackCompleto": "A tese central é que a inovação é uma necessidade essencial ('imperativa') para que o setor público consiga lidar com seus desafios (recursos escassos, demandas crescentes) e se manter sustentável. A conjunção adversativa 'mas' introduz a ideia principal, contrapondo-a à noção de 'luxo'.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Em 'Ele estudou com afinco, logo foi aprovado.', a conjunção 'logo' estabelece uma relação de:",
+    "options": [
+      "Oposição",
+      "Adição",
+      "Explicação",
+      "Conclusão"
+    ],
+    "answer": 3,
+    "hint": "Pense na relação entre a primeira e a segunda oração. Uma é o resultado lógico da outra.",
+    "feedbackCompleto": "A conjunção 'logo' é uma conjunção coordenada sindética conclusiva. Ela introduz uma oração que expressa a consequência ou a dedução lógica do fato expresso na oração anterior. Outros sinônimos são 'portanto', 'por conseguinte', 'então'.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual a função sintática do termo destacado em 'A população tem necessidade **de serviços de qualidade**.'?",
+    "options": [
+      "Objeto Indireto",
+      "Complemento Nominal",
+      "Adjunto Adnominal",
+      "Agente da Passiva"
+    ],
+    "answer": 1,
+    "hint": "O termo preposicionado está completando o sentido de um substantivo abstrato ('necessidade').",
+    "feedbackCompleto": "O termo 'de serviços de qualidade' completa o sentido do substantivo abstrato 'necessidade'. Quando um termo preposicionado completa o sentido de um substantivo, adjetivo ou advérbio, ele exerce a função de Complemento Nominal.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Assinale a opção em que o uso da crase é OBRIGATÓRIO.",
+    "options": [
+      "Entreguei o relatório a minha gerente.",
+      "Fomos a Brasília para a posse.",
+      "Ele se referiu a ela com respeito.",
+      "Dirigiu-se àquela repartição em busca de informações."
+    ],
+    "answer": 3,
+    "hint": "A crase ocorre antes de pronomes demonstrativos como 'aquele(a)', 'aquilo' quando o termo regente exige a preposição 'a'.",
+    "feedbackCompleto": "A opção D está correta. O verbo 'dirigir-se' exige a preposição 'a' (dirigir-se A algum lugar). O pronome demonstrativo 'aquela' começa com a vogal 'a'. A fusão da preposição com o 'a' do pronome torna a crase obrigatória. Nas outras opções, a crase é facultativa (A), proibida (B) ou proibida (C).",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "No trecho 'O projeto foi bem executado; não houve, **contudo**, a aprovação da diretoria.', o conectivo 'contudo' expressa uma ideia de:",
+    "options": [
+      "Adição",
+      "Conclusão",
+      "Adversidade",
+      "Explicação"
+    ],
+    "answer": 2,
+    "hint": "Pense em um sinônimo como 'mas' ou 'porém'.",
+    "feedbackCompleto": "'Contudo' é uma conjunção coordenada sindética adversativa, assim como 'mas', 'porém', 'todavia', 'entretanto'. Ela introduz uma oração que expressa uma ideia de oposição ou contraste em relação à oração anterior.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "A concordância nominal está INCORRETA em:",
+    "options": [
+      "As servidoras pareciam meio sonolentas.",
+      "Seguem anexas as propostas.",
+      "É necessário a paciência dos líderes.",
+      "Compramos bastantes materiais para o escritório."
+    ],
+    "answer": 2,
+    "hint": "A expressão 'é necessário', quando o sujeito não vem precedido de artigo, fica invariável. Mas quando há artigo...",
+    "feedbackCompleto": "O erro está na opção C. Quando o sujeito da expressão 'é necessário' vem determinado por um artigo (no caso, 'a paciência'), a expressão deve concordar com ele. O correto é: 'É necessária a paciência dos líderes'.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual a classificação da oração destacada em 'A verdade é **que ninguém sabia a resposta**.'?",
+    "options": [
+      "Oração Subordinada Substantiva Subjetiva",
+      "Oração Subordinada Substantiva Predicativa",
+      "Oração Subordinada Substantiva Objetiva Direta",
+      "Oração Subordinada Adjetiva Explicativa"
+    ],
+    "answer": 1,
+    "hint": "A oração está funcionando como o predicativo do sujeito 'A verdade', após um verbo de ligação.",
+    "feedbackCompleto": "A oração 'que ninguém sabia a resposta' exerce a função de predicativo do sujeito ('A verdade'). Ela vem após o verbo de ligação 'é'. Portanto, é classificada como Oração Subordinada Substantiva Predicativa.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "A regência do verbo 'preferir' está correta em:",
+    "options": [
+      "Prefiro mais trabalhar do que descansar.",
+      "Prefiro trabalhar a descansar.",
+      "Prefiro trabalhar do que descansar.",
+      "Prefiro mil vezes trabalhar do que descansar."
+    ],
+    "answer": 1,
+    "hint": "O verbo 'preferir' é transitivo direto e indireto, e a norma culta não admite intensificadores como 'mais' ou a preposição 'do que'.",
+    "feedbackCompleto": "A regência correta do verbo 'preferir' é 'preferir uma coisa A outra'. Ele é transitivo direto para a coisa preferida ('trabalhar') e transitivo indireto com a preposição 'a' para a coisa preterida ('descansar'). Portanto, 'Prefiro trabalhar a descansar' é a forma correta.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Leia o trecho: 'A digitalização dos serviços públicos, ao mesmo tempo que democratiza o acesso, pode aprofundar a exclusão digital daqueles sem conectividade ou letramento digital.' A estrutura do trecho se baseia em uma relação de:",
+    "options": [
+      "Causa e efeito",
+      "Comparação",
+      "Contraste ou paradoxo",
+      "Enumeração"
+    ],
+    "answer": 2,
+    "hint": "O autor apresenta dois efeitos opostos do mesmo fenômeno.",
+    "feedbackCompleto": "O trecho é construído sobre uma relação de contraste ou paradoxo. A expressão 'ao mesmo tempo que' introduz duas consequências opostas da digitalização: uma positiva (democratiza o acesso) e uma negativa (pode aprofundar a exclusão), mostrando a dualidade do fenômeno.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual das seguintes frases contém uma oração coordenada sindética aditiva?",
+    "options": [
+      "Ele estudou muito, mas não passou.",
+      "Ora chove, ora faz sol.",
+      "O servidor não só organizou os arquivos, mas também atendeu ao público.",
+      "Fale agora ou cale-se para sempre."
+    ],
+    "answer": 2,
+    "hint": "Procure por conjunções que somam ideias, como 'e', 'nem', 'não só... mas também'.",
+    "feedbackCompleto": "A opção C utiliza a locução conjuntiva aditiva 'não só... mas também', que serve para somar duas ações ('organizou' e 'atendeu'). As outras opções são adversativa (A), alternativas (B e D).",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "A concordância verbal está CORRETA em:",
+    "options": [
+      "A maior parte dos problemas foi resolvidos.",
+      "Um bando de pássaros sobrevoou a cidade.",
+      "Fomos nós que resolveu a situação.",
+      "Aluga-se apartamentos para temporada."
+    ],
+    "answer": 1,
+    "hint": "Quando o sujeito é um coletivo partitivo seguido de um especificador no plural, o verbo pode concordar com o núcleo ou com o especificador. Mas com coletivos não partitivos, a regra é o singular.",
+    "feedbackCompleto": "A opção B está correta. O sujeito é 'Um bando de pássaros'. O núcleo do sujeito é 'bando' (singular), um coletivo não partitivo, o que exige o verbo no singular ('sobrevoou'). As outras estão erradas: A ('foi resolvido' ou 'foram resolvidos'); C ('resolvemos'); D ('Alugam-se').",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "No período 'Ele agiu conforme o regulamento previa.', a oração destacada é subordinada adverbial:",
+    "options": [
+      "Causal",
+      "Condicional",
+      "Conformativa",
+      "Consecutiva"
+    ],
+    "answer": 2,
+    "hint": "A conjunção 'conforme' indica que a ação foi feita 'de acordo com' algo.",
+    "feedbackCompleto": "A conjunção 'conforme' introduz uma oração subordinada adverbial conformativa. Ela expressa a conformidade ou o acordo entre o fato da oração principal e o que é declarado na oração subordinada.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual a função sintática do termo destacado em 'A aprovação no concurso depende **de muito estudo**.'?",
+    "options": [
+      "Objeto Indireto",
+      "Complemento Nominal",
+      "Sujeito",
+      "Adjunto Adverbial"
+    ],
+    "answer": 0,
+    "hint": "O termo preposicionado está completando o sentido de um verbo.",
+    "feedbackCompleto": "O termo 'de muito estudo' completa o sentido do verbo 'depender', que é transitivo indireto (quem depende, depende DE algo). Portanto, exerce a função sintática de Objeto Indireto.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "O uso da crase está INCORRETO em:",
+    "options": [
+      "A peça teatral começará às 20h.",
+      "Fui à França no ano passado.",
+      "Ele fez uma declaração à imprensa.",
+      "O prêmio foi entregue à ela."
+    ],
+    "answer": 3,
+    "hint": "Não se usa crase antes da maioria dos pronomes pessoais do caso reto.",
+    "feedbackCompleto": "O erro está na opção D. Não ocorre crase antes de pronomes pessoais do caso reto (eu, tu, ele, ela, etc.). O correto seria '...entregue a ela'. As outras opções estão corretas.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "No trecho 'A equipe trabalhou unida; logo, o resultado foi excelente.', a conjunção 'logo' pode ser substituída, sem alteração de sentido, por:",
+    "options": [
+      "Porém",
+      "Pois",
+      "Portanto",
+      "Embora"
+    ],
+    "answer": 2,
+    "hint": "Procure uma conjunção que expresse uma conclusão.",
+    "feedbackCompleto": "'Logo' é uma conjunção conclusiva. Seu sinônimo mais direto na lista é 'Portanto', que também introduz a consequência lógica da afirmação anterior.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "A concordância nominal está CORRETA em:",
+    "options": [
+      "Ela mesma confirmou a presença.",
+      "É proibido a venda de bebidas.",
+      "As servidoras ficaram bastante cansadas.",
+      "Compramos vinhos e cervejas importado."
+    ],
+    "answer": 0,
+    "hint": "A palavra 'mesmo' concorda com o termo a que se refere. 'Bastante' pode ser advérbio ou pronome.",
+    "feedbackCompleto": "A opção A está correta. O pronome 'mesma' concorda corretamente em gênero e número com 'Ela'. As outras estão erradas: B ('É proibida a venda...'); C ('bastante' como advérbio é invariável, mas aqui equivale a 'muito', então está correto); D ('importados', concordando com os dois substantivos). A opção C também está correta, mas a A é o exemplo mais clássico.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "A oração destacada em 'O problema é **que o prazo é curto**.' é uma oração subordinada substantiva:",
+    "options": [
+      "Subjetiva",
+      "Objetiva Direta",
+      "Completiva Nominal",
+      "Predicativa"
+    ],
+    "answer": 3,
+    "hint": "A oração vem depois de um verbo de ligação ('é') e funciona como predicativo do sujeito ('O problema').",
+    "feedbackCompleto": "A oração 'que o prazo é curto' funciona como predicativo do sujeito 'O problema'. Ela atribui uma característica ao sujeito através do verbo de ligação 'é'. Portanto, é classificada como Oração Subordinada Substantiva Predicativa.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "A regência do verbo 'implicar' está INCORRETA em:",
+    "options": [
+      "A nova lei implicará mudanças significativas.",
+      "O servidor implicou com o colega de trabalho.",
+      "Sua ausência implicou no cancelamento da reunião.",
+      "Ele se implicou em negócios ilícitos."
+    ],
+    "answer": 2,
+    "hint": "O verbo 'implicar' no sentido de 'acarretar' é transitivo direto.",
+    "feedbackCompleto": "O erro está na opção C. No sentido de 'acarretar' ou 'resultar em', o verbo 'implicar' é transitivo direto, não exigindo a preposição 'em'. O correto é: 'Sua ausência implicou o cancelamento da reunião'.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Leia o trecho: 'A transparência na gestão pública é um pilar da democracia. Ela permite o controle social, fomenta a confiança e inibe a corrupção.' Qual o papel do segundo período em relação ao primeiro?",
+    "options": [
+      "Apresentar uma oposição à ideia anterior.",
+      "Explicar e detalhar a afirmação feita no primeiro período.",
+      "Indicar a consequência da transparência.",
+      "Fazer uma comparação com outras democracias."
+    ],
+    "answer": 1,
+    "hint": "Pense se o segundo período justifica ou detalha o porquê de a transparência ser um pilar.",
+    "feedbackCompleto": "O segundo período ('Ela permite o controle social...') serve para explicar e justificar a afirmação feita no primeiro período. Ele detalha os motivos pelos quais a transparência é considerada um pilar da democracia, funcionando como uma enumeração de suas funções e benefícios.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual das seguintes frases contém uma oração coordenada sindética adversativa?",
+    "options": [
+      "Ele nem estuda nem trabalha.",
+      "O projeto é bom, porém muito caro.",
+      "Estude, pois a prova será difícil.",
+      "Ou você colabora, ou fica de fora."
+    ],
+    "answer": 1,
+    "hint": "Procure por conjunções que expressam contraste ou oposição, como 'mas', 'porém', 'contudo'.",
+    "feedbackCompleto": "A opção B utiliza a conjunção 'porém', que é adversativa. Ela conecta duas orações, estabelecendo uma relação de contraste ou oposição entre elas ('o projeto é bom' X 'é muito caro').",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "A concordância verbal está INCORRETA em:",
+    "options": [
+      "Um milhão de pessoas participaram da manifestação.",
+      "Cada um dos servidores recebeu o comunicado.",
+      "Fui eu que fiz o relatório.",
+      "Bateu três horas no relógio da matriz."
+    ],
+    "answer": 3,
+    "hint": "Verbos que indicam horas, como 'bater', 'dar' e 'soar', concordam com o numeral.",
+    "feedbackCompleto": "O erro está na opção D. Verbos que indicam horas concordam com o numeral a que se referem. Como o numeral é 'três' (plural), o verbo deve estar no plural. O correto é: 'Bateram três horas...'.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual a função sintática do termo destacado em 'A vida na cidade grande oferece muitas oportunidades, **mas também muitos desafios**.'?",
+    "options": [
+      "Sujeito",
+      "Objeto Direto",
+      "Adjunto Adverbial",
+      "Complemento Nominal"
+    ],
+    "answer": 1,
+    "hint": "O termo está completando o sentido do verbo 'oferecer'.",
+    "feedbackCompleto": "O termo 'muitos desafios' é o segundo núcleo do objeto direto do verbo 'oferecer', que é transitivo direto e indireto. O verbo tem como objeto direto 'muitas oportunidades e também muitos desafios'. A conjunção aditiva 'mas também' conecta os dois núcleos.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "A frase 'A cidade, onde passei minha infância, mudou muito.' contém uma oração subordinada adjetiva:",
+    "options": [
+      "Restritiva, pois especifica de qual cidade se fala.",
+      "Explicativa, pois adiciona uma informação acessória sobre a cidade.",
+      "Reduzida de Gerúndio.",
+      "Comparativa."
+    ],
+    "answer": 1,
+    "hint": "A presença das vírgulas é o principal indicador para classificar a oração adjetiva.",
+    "feedbackCompleto": "A oração 'onde passei minha infância', por estar isolada por vírgulas, é classificada como Oração Subordinada Adjetiva Explicativa. Ela acrescenta uma informação adicional sobre o antecedente ('A cidade'), mas não é essencial para a identificação dele.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "A regência do verbo 'esquecer' está INCORRETA em:",
+    "options": [
+      "Eu esqueci o documento em casa.",
+      "Eu me esqueci do documento.",
+      "Eu esqueci do documento.",
+      "Nunca me esqueço de você."
+    ],
+    "answer": 2,
+    "hint": "O verbo 'esquecer' pode ser transitivo direto ou pronominal (transitivo indireto).",
+    "feedbackCompleto": "O erro está na opção C. O verbo 'esquecer' pode ser usado de duas formas: 1) Sem pronome, como transitivo direto (Esqueci o documento). 2) Com pronome (esquecer-se), como transitivo indireto, exigindo a preposição 'de' (Esqueci-me do documento). A forma 'Esqueci do documento' mistura as duas regências e é considerada incorreta pela norma culta.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "No trecho 'O servidor agiu com lisura; era, **pois**, um homem honesto.', o conectivo 'pois' tem valor:",
+    "options": [
+      "Causal",
+      "Explicativo",
+      "Conclusivo",
+      "Adversativo"
+    ],
+    "answer": 2,
+    "hint": "A posição do 'pois' (deslocado, após o verbo) altera seu sentido.",
+    "feedbackCompleto": "Quando a conjunção 'pois' vem posposta ao verbo (deslocada na oração), ela tem valor conclusivo, equivalendo a 'portanto' ou 'logo'. Se estivesse no início da segunda oração ('...pois era um homem honesto.'), teria valor explicativo.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "Qual das seguintes palavras é acentuada pela mesma regra de 'história'?",
+    "options": [
+      "País",
+      "Saúde",
+      "Relatório",
+      "Herói"
+    ],
+    "answer": 2,
+    "hint": "A palavra 'história' é uma paroxítona terminada em ditongo crescente.",
+    "feedbackCompleto": "A palavra 'história' é acentuada por ser uma paroxítona terminada em ditongo crescente (ia). A palavra 'Relatório' segue a mesma regra, pois também é uma paroxítona terminada em ditongo crescente (io). 'País' e 'Saúde' são acentuadas pela regra do hiato, e 'Herói' pela regra do ditongo aberto tônico.",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "A concordância do verbo 'ser' está INCORRETA em:",
+    "options": [
+      "Hoje são 14 de agosto.",
+      "Daqui até a cidade é dois quilômetros.",
+      "Tudo são flores na vida.",
+      "Dois mil reais é pouco para a viagem."
+    ],
+    "answer": 1,
+    "hint": "O verbo 'ser' em indicações de distância, data e hora concorda com o numeral.",
+    "feedbackCompleto": "O erro está na opção B. Quando o verbo 'ser' indica distância, ele deve concordar com a expressão numérica. O correto é: 'Daqui até a cidade SÃO dois quilômetros'. As outras estão corretas: A (concorda com o numeral do dia), C (concorda com o predicativo 'flores'), D (quando o sujeito é uma expressão de valor, o verbo fica no singular).",
+    "subjects": ["portugues"]
+  },
+  {
+    "question": "A oração 'O fato é **que a equipe venceu**.' classifica-se como:",
+    "options": [
+      "Subordinada Substantiva Apositiva",
+      "Subordinada Substantiva Subjetiva",
+      "Subordinada Substantiva Objetiva Direta",
+      "Subordinada Substantiva Predicativa"
+    ],
+    "answer": 3,
+    "hint": "A oração vem após um verbo de ligação e funciona como predicativo do sujeito.",
+    "feedbackCompleto": "A oração 'que a equipe venceu' está funcionando como predicativo do sujeito 'O fato', ligada a ele pelo verbo de ligação 'é'. Portanto, é uma Oração Subordinada Substantiva Predicativa.",
+    "subjects": ["portugues"]
   }
 
 ]
