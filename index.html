@@ -36692,518 +36692,535 @@
     "subjects": ["direito-constitucional"]
   }
 ]
-
-
-
-
-
-
-
-
-
-
     
 
 
-        // --- LÓGICA PRINCIPAL DO QUIZ ---
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            let questions = [];
-            let currentUser = null;
-            let currentQuestionIndex = 0;
-            let selectedSubject = "all";
-            let userAnswers = [];
-            let filteredQuestions = [];
-            let isReviewMode = false;
-            let errosParaRepetir = [];
-            let difficultyRatings = {};
-            let favoriteQuestions = [];
-            let allScores = [];
+       // --- LÓGICA PRINCIPAL DO QUIZ ---
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // ===================================================================
+    //  FUNÇÃO DE EMBARALHAR (shuffle) <-- ADICIONADA AQUI
+    // ===================================================================
+    // Esta função é o coração da solução. Ela pega uma lista e a embaralha
+    // de forma eficiente, garantindo uma ordem aleatória sem repetições.
+    function shuffle(array) {
+        let currentIndex = array.length,  randomIndex;
 
-            const elements = {
-                loginModal: document.getElementById('loginModal'),
-                resultsModal: document.getElementById('resultsModal'),
-                dashboardModal: document.getElementById('dashboardModal'),
-                quizContainer: document.getElementById('quizContainer'),
-                loginBtn: document.getElementById('loginBtn'),
-                dashboardBtn: document.getElementById('dashboardBtn'),
-                portfolioBtn: document.getElementById('portfolioBtn'),
-                closeDashboardBtn: document.getElementById('closeDashboardBtn'),
-                usernameInput: document.getElementById('username'),
-                emailInput: document.getElementById('email'),
-                terminal: document.getElementById('terminal'),
-                scoresList: document.getElementById('scoresList'),
-                questionEl: document.getElementById('question'),
-                optionsEl: document.getElementById('options'),
-                prevBtn: document.getElementById('prev-btn'),
-                nextBtn: document.getElementById('next-btn'),
-                finishQuizBtn: document.getElementById('finish-quiz-btn'),
-                progressEl: document.getElementById('progress'),
-                subjectTabs: document.querySelectorAll('.subject-button'),
-                resultStatsEl: document.getElementById('result-stats'),
-                reviewBtn: document.getElementById('reviewBtn'),
-                restartBtn: document.getElementById('restartBtn'),
-                hintBtn: document.getElementById('hintBtn'),
-                hintDisplay: document.getElementById('hintDisplay'),
-                feedbackDisplay: document.getElementById('feedbackDisplay'),
-                simuladoBtn: document.getElementById('simulado-btn'),
-                difficultyContainer: document.getElementById('difficultyContainer'),
-                difficultyButtons: document.querySelectorAll('.difficulty-rating .cyber-button'),
-                dashboardStatsEl: document.getElementById('dashboard-stats'),
-                favoriteBtn: document.getElementById('favoriteBtn'),
-                navigationContainer: document.getElementById('navigationContainer')
-            };
+        // While there remain elements to shuffle.
+        while (currentIndex != 0) {
 
-            // --- FUNÇÕES ---
+            // Pick a remaining element.
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
 
-            function addTerminalLine(text) {
-                const p = document.createElement('p');
-                p.className = 'terminal-line';
-                p.innerHTML = text;
-                elements.terminal.appendChild(p);
-                elements.terminal.scrollTop = elements.terminal.scrollHeight;
-            }
-            
-            function loadFromLocalStorage() {
-                try {
-                    const savedScores = localStorage.getItem('quantumQuizScores');
-                    allScores = savedScores ? JSON.parse(savedScores) : [];
-                    const savedFavorites = localStorage.getItem('quantumQuizFavorites');
-                    favoriteQuestions = savedFavorites ? JSON.parse(savedFavorites) : [];
-                } catch (e) {
-                    console.error("Erro ao carregar dados do localStorage:", e);
-                    allScores = [];
-                    favoriteQuestions = [];
-                }
-            }
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
 
-            function shuffle(array) {
-                for (let i = array.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
-                }
-                return array;
-            }
+        return array;
+    }
 
-            function updateLeaderboard() {
-                elements.scoresList.innerHTML = '';
-                const summaryScores = allScores.map(s => ({ username: s.username, score: s.score, total: s.total })).filter(s => s.total > 0);
-                const topScores = summaryScores.sort((a, b) => b.score - a.score).slice(0, 10);
-                if (topScores.length === 0) {
-                    elements.scoresList.innerHTML = '<p>Nenhuma pontuação registrada.</p>';
-                    return;
-                }
-                topScores.forEach((item, index) => {
-                    const scoreItem = document.createElement('div');
-                    scoreItem.className = 'leaderboard-item';
-                    scoreItem.innerHTML = `<span>${index + 1}. ${item.username}</span><span>${item.score}/${item.total}</span>`;
-                    elements.scoresList.appendChild(scoreItem);
-                });
-            }
+    let questions = [];
+    let currentUser = null;
+    let currentQuestionIndex = 0;
+    let selectedSubject = "all";
+    let userAnswers = [];
+    let filteredQuestions = [];
+    let isReviewMode = false;
+    let errosParaRepetir = [];
+    let difficultyRatings = {};
+    let favoriteQuestions = [];
+    let allScores = [];
 
-            function loadQuestion() {
-                if (filteredQuestions.length === 0 || currentQuestionIndex >= filteredQuestions.length) {
-                    finishQuiz();
-                    return;
-                }
-                const q = filteredQuestions[currentQuestionIndex];
-                elements.questionEl.innerHTML = `[${currentQuestionIndex + 1}/${filteredQuestions.length}] ${q.question}`;
-                elements.optionsEl.innerHTML = '';
-                q.options.forEach((option, index) => {
-                    const optionEl = document.createElement('div');
-                    optionEl.classList.add('option');
-                    optionEl.textContent = option;
-                    optionEl.style.cursor = 'pointer';
-                    optionEl.addEventListener('click', () => selectAnswer(index));
-                    elements.optionsEl.appendChild(optionEl);
-                });
-                elements.feedbackDisplay.style.display = 'none';
-                elements.hintDisplay.style.display = 'none';
-                elements.difficultyContainer.style.display = 'none';
-                elements.hintBtn.style.display = 'block';
-                elements.progressEl.style.width = `${((currentQuestionIndex + 1) / filteredQuestions.length) * 100}%`;
-                updateFavoriteIcon();
-                updateNavigationButtons();
-            }
+    const elements = {
+        loginModal: document.getElementById('loginModal'),
+        resultsModal: document.getElementById('resultsModal'),
+        dashboardModal: document.getElementById('dashboardModal'),
+        quizContainer: document.getElementById('quizContainer'),
+        loginBtn: document.getElementById('loginBtn'),
+        dashboardBtn: document.getElementById('dashboardBtn'),
+        portfolioBtn: document.getElementById('portfolioBtn'),
+        closeDashboardBtn: document.getElementById('closeDashboardBtn'),
+        usernameInput: document.getElementById('username'),
+        emailInput: document.getElementById('email'),
+        terminal: document.getElementById('terminal'),
+        scoresList: document.getElementById('scoresList'),
+        questionEl: document.getElementById('question'),
+        optionsEl: document.getElementById('options'),
+        prevBtn: document.getElementById('prev-btn'),
+        nextBtn: document.getElementById('next-btn'),
+        finishQuizBtn: document.getElementById('finish-quiz-btn'),
+        progressEl: document.getElementById('progress'),
+        subjectTabs: document.querySelectorAll('.subject-button'),
+        resultStatsEl: document.getElementById('result-stats'),
+        reviewBtn: document.getElementById('reviewBtn'),
+        restartBtn: document.getElementById('restartBtn'),
+        hintBtn: document.getElementById('hintBtn'),
+        hintDisplay: document.getElementById('hintDisplay'),
+        feedbackDisplay: document.getElementById('feedbackDisplay'),
+        simuladoBtn: document.getElementById('simulado-btn'),
+        difficultyContainer: document.getElementById('difficultyContainer'),
+        difficultyButtons: document.querySelectorAll('.difficulty-rating .cyber-button'),
+        dashboardStatsEl: document.getElementById('dashboard-stats'),
+        favoriteBtn: document.getElementById('favoriteBtn'),
+        navigationContainer: document.getElementById('navigationContainer')
+    };
 
-            function selectAnswer(selectedIndex) {
-                if (userAnswers[currentQuestionIndex] !== undefined) return;
-                userAnswers[currentQuestionIndex] = selectedIndex;
-                const q = filteredQuestions[currentQuestionIndex];
-                const isCorrect = selectedIndex === q.answer;
-                elements.optionsEl.querySelectorAll('.option').forEach(opt => {
-                    const newOpt = opt.cloneNode(true);
-                    opt.parentNode.replaceChild(newOpt, opt);
-                    newOpt.style.cursor = 'default';
-                });
-                if (!isCorrect) agendarRepeticao(q);
-                displayFeedback(selectedIndex);
-                elements.hintBtn.style.display = 'none';
-                elements.difficultyContainer.style.display = 'flex';
-            }
+    // --- FUNÇÕES ---
 
-            function toggleFavorite() {
-                const currentQ = filteredQuestions[currentQuestionIndex];
-                if (!currentQ) return;
-                const questionId = currentQ.id;
-                const favoriteIndex = favoriteQuestions.indexOf(questionId);
-                if (favoriteIndex > -1) {
-                    favoriteQuestions.splice(favoriteIndex, 1);
-                    addTerminalLine(`> Questão [${questionId}] removida do portfólio.`);
-                } else {
-                    favoriteQuestions.push(questionId);
-                    addTerminalLine(`> Questão [${questionId}] adicionada ao portfólio.`);
-                }
-                localStorage.setItem('quantumQuizFavorites', JSON.stringify(favoriteQuestions));
-                updateFavoriteIcon();
-            }
+    function addTerminalLine(text) {
+        const p = document.createElement('p');
+        p.className = 'terminal-line';
+        p.innerHTML = text;
+        elements.terminal.appendChild(p);
+        elements.terminal.scrollTop = elements.terminal.scrollHeight;
+    }
+    
+    function loadFromLocalStorage() {
+        try {
+            const savedScores = localStorage.getItem('quantumQuizScores');
+            allScores = savedScores ? JSON.parse(savedScores) : [];
+            const savedFavorites = localStorage.getItem('quantumQuizFavorites');
+            favoriteQuestions = savedFavorites ? JSON.parse(savedFavorites) : [];
+        } catch (e) {
+            console.error("Erro ao carregar dados do localStorage:", e);
+            allScores = [];
+            favoriteQuestions = [];
+        }
+    }
 
-            function updateFavoriteIcon() {
-                const currentQ = filteredQuestions[currentQuestionIndex];
-                if (elements.favoriteBtn && currentQ) {
-                    if (favoriteQuestions.includes(currentQ.id)) {
-                        elements.favoriteBtn.classList.add('favorited');
-                    } else {
-                        elements.favoriteBtn.classList.remove('favorited');
-                    }
-                }
-            }
-            
-            function filterQuestionsBySubject() {
-                if (selectedSubject === "portfolio") {
-                    filteredQuestions = questions.filter(q => favoriteQuestions.includes(q.id));
-                } else if (selectedSubject === "all") {
-                    filteredQuestions = [...questions];
-                } else {
-                    filteredQuestions = questions.filter(q => q.subjects && q.subjects.includes(selectedSubject));
-                }
-            }
+    // A função shuffle foi movida para o topo para melhor organização
 
-            function startQuiz() {
-                currentQuestionIndex = 0;
-                isReviewMode = false;
-                errosParaRepetir = [];
-                difficultyRatings = {};
-                filterQuestionsBySubject();
-                if (filteredQuestions.length > 0) {
-                    elements.navigationContainer.style.display = 'flex';
-                    userAnswers = Array(filteredQuestions.length).fill(undefined);
-                    loadQuestion();
-                } else {
-                    elements.questionEl.textContent = selectedSubject === "portfolio" 
-                        ? "Você ainda não favoritou nenhuma questão para revisar." 
-                        : "Nenhuma questão encontrada para esta matéria.";
-                    elements.optionsEl.innerHTML = "";
-                    elements.navigationContainer.style.display = 'none';
-                }
-            }
-
-            function startPortfolioQuiz() {
-                const username = elements.usernameInput.value.trim();
-                if (!username) {
-                    alert("Por favor, digite um nome de usuário antes de iniciar.");
-                    return;
-                }
-                if (favoriteQuestions.length === 0) {
-                    alert("Você ainda não favoritou nenhuma questão para revisar!");
-                    return;
-                }
-                currentUser = { username, email: elements.emailInput.value.trim() || null };
-                selectedSubject = "portfolio";
-                elements.loginModal.style.display = 'none';
-                elements.quizContainer.style.display = 'block';
-                addTerminalLine(`> Iniciando modo de revisão do Portfólio...`);
-                elements.subjectTabs.forEach(t => t.classList.remove('active'));
-                startQuiz();
-            }
-
-            function finishQuiz() {
-                if(filteredQuestions.length === 0) {
-                    elements.quizContainer.style.display = 'none';
-                    elements.loginModal.style.display = 'flex';
-                    return;
-                }
-                let correctCount = 0;
-                const answerDetails = [];
-                filteredQuestions.forEach((q, index) => {
-                    const userAnswer = userAnswers[index];
-                    const isCorrect = userAnswer === q.answer;
-                    if (isCorrect) correctCount++;
-                    answerDetails.push({ questionId: q.id, subjects: q.subjects || [], userAnswer, correctAnswer: q.answer, isCorrect });
-                });
-                const total = filteredQuestions.length;
-                const percentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
-                elements.resultStatsEl.innerHTML = `Você acertou ${correctCount} de ${total} questões.<br> (${percentage}%)`;
-                if(total > 0 && selectedSubject !== 'portfolio') { // Não salva score do modo portfólio
-                    saveDetailedScore(correctCount, total, answerDetails);
-                }
-                elements.quizContainer.style.display = 'none';
-                elements.resultsModal.style.display = 'flex';
-            }
-            
-            function saveDetailedScore(score, total, details) {
-                if (!currentUser) return;
-                const newScore = { username: currentUser.username, score, total, details, date: new Date().toISOString(), subject: selectedSubject };
-                allScores.push(newScore);
-                localStorage.setItem('quantumQuizScores', JSON.stringify(allScores));
-                updateLeaderboard();
-            }
-
-            function showDashboard() {
-                const username = elements.usernameInput.value.trim();
-                if (!username) {
-                    alert('Por favor, digite seu nome de usuário para ver o desempenho.');
-                    return;
-                }
-                const userScores = allScores.filter(s => s.username === username);
-                if (userScores.length === 0) {
-                    elements.dashboardStatsEl.innerHTML = '<p>Nenhum dado de desempenho encontrado. Complete um quiz primeiro!</p>';
-                } else {
-                    const stats = calculateStats(userScores);
-                    displayStats(stats);
-                }
-                elements.dashboardModal.style.display = 'flex';
-            }
-
-            function getSubjectName(subjectKey) {
-                const tab = document.querySelector(`.subject-button[data-subject="${subjectKey}"]`);
-                return tab ? tab.textContent : subjectKey;
-            }
-
-            function calculateStats(userScores) {
-                const subjectStats = {};
-                let totalCorrect = 0;
-                let totalAttempted = 0;
-                userScores.forEach(score => {
-                    score.details.forEach(detail => {
-                        if(detail.userAnswer === undefined) return;
-                        totalAttempted++;
-                        if(detail.isCorrect) totalCorrect++;
-                        if(detail.subjects) {
-                            detail.subjects.forEach(subject => {
-                                if (!subjectStats[subject]) {
-                                    subjectStats[subject] = { correct: 0, total: 0, name: getSubjectName(subject) };
-                                }
-                                subjectStats[subject].total++;
-                                if (detail.isCorrect) subjectStats[subject].correct++;
-                            });
-                        }
-                    });
-                });
-                const overallPercentage = totalAttempted > 0 ? (totalCorrect / totalAttempted) * 100 : 0;
-                return {
-                    overall: { correct: totalCorrect, total: totalAttempted, percentage: overallPercentage.toFixed(1) },
-                    bySubject: subjectStats
-                };
-            }
-
-            function displayStats(stats) {
-                let tableHTML = `<p><strong>Desempenho Geral:</strong> ${stats.overall.correct} de ${stats.overall.total} acertos (${stats.overall.percentage}%)</p><table><thead><tr><th>Matéria</th><th>Acertos / Total</th><th>Percentual</th></tr></thead><tbody>`;
-                const sortedSubjects = Object.entries(stats.bySubject).sort(([,a], [,b]) => a.name.localeCompare(b.name));
-                for (const [subjectKey, data] of sortedSubjects) {
-                    const percentage = data.total > 0 ? ((data.correct / data.total) * 100).toFixed(1) : 0;
-                    tableHTML += `<tr><td>${data.name}</td><td>${data.correct} / ${data.total}</td><td><div class="progress-bar-stat"><div class="progress-fill" style="width: ${percentage}%;">${percentage}%</div></div></td></tr>`;
-                }
-                tableHTML += `</tbody></table>`;
-                elements.dashboardStatsEl.innerHTML = tableHTML;
-            }
-            
-            function startSimulado(numQuestoes) {
-                const username = elements.usernameInput.value.trim();
-                if (!username) {
-                    alert("Por favor, digite um nome de usuário antes de iniciar o simulado.");
-                    return;
-                }
-                if (questions.length < numQuestoes) {
-                    alert(`Não há questões suficientes. Total: ${questions.length}`);
-                    return;
-                }
-                currentUser = { username, email: elements.emailInput.value.trim() || null };
-                isReviewMode = false;
-                errosParaRepetir = [];
-                selectedSubject = 'all';
-                filteredQuestions = shuffle([...questions]).slice(0, numQuestoes);
-                currentQuestionIndex = 0;
-                userAnswers = Array(filteredQuestions.length).fill(undefined);
-                elements.loginModal.style.display = 'none';
-                elements.quizContainer.style.display = 'block';
-                addTerminalLine(`> Simulado de ${numQuestoes} questões iniciado...`);
-                loadQuestion();
-                elements.subjectTabs.forEach(t => t.classList.remove('active'));
-                document.querySelector('.subject-button[data-subject="all"]').classList.add('active');
-            }
-            
-            function displayFeedback(selectedIndex) {
-                const q = filteredQuestions[currentQuestionIndex];
-                const isCorrect = selectedIndex === q.answer;
-                elements.optionsEl.querySelectorAll('.option').forEach((option, index) => {
-                    if (index === q.answer) option.classList.add('correct');
-                    if (index === selectedIndex) option.classList.add('incorrect', 'selected');
-                });
-                let feedbackContent = isCorrect ? `✅ **Correto!**<br><br>` : `❌ **Incorreto.**<br><br>`;
-                feedbackContent += `A resposta correta é: "${q.options[q.answer]}".<br><br>${q.feedbackCompleto || "Justificativa não disponível."}`;
-                elements.feedbackDisplay.innerHTML = feedbackContent;
-                elements.feedbackDisplay.style.display = 'block';
-            }
-
-            function agendarRepeticao(question) {
-                if (!errosParaRepetir.some(item => item.id === question.id)) {
-                    addTerminalLine(`> Questão [${question.id}] agendada para revisão.`);
-                    setTimeout(() => {errosParaRepetir.push(question);}, 60000);
-                }
-            }
-            
-            function updateNavigationButtons() {
-                elements.prevBtn.disabled = currentQuestionIndex === 0;
-                if (isReviewMode) {
-                    elements.nextBtn.textContent = (currentQuestionIndex === filteredQuestions.length - 1) ? 'Voltar' : 'Próxima →';
-                } else {
-                    elements.nextBtn.textContent = (currentQuestionIndex === filteredQuestions.length - 1 && errosParaRepetir.length === 0) ? 'Finalizar' : 'Próxima →';
-                }
-                elements.finishQuizBtn.style.display = isReviewMode ? 'none' : 'block';
-            }
-
-            function startReviewMode() {
-                isReviewMode = true;
-                currentQuestionIndex = 0;
-                loadReviewQuestion();
-            }
-
-            function loadReviewQuestion() {
-                if (currentQuestionIndex >= filteredQuestions.length) {
-                    elements.quizContainer.style.display = 'none';
-                    elements.resultsModal.style.display = 'flex';
-                    return;
-                }
-                const q = filteredQuestions[currentQuestionIndex];
-                elements.questionEl.textContent = `[Revisão ${currentQuestionIndex + 1}/${filteredQuestions.length}] ${q.question}`;
-                elements.optionsEl.innerHTML = '';
-                const selectedAnswer = userAnswers[currentQuestionIndex];
-                q.options.forEach((option, index) => {
-                    const optionEl = document.createElement('div');
-                    optionEl.classList.add('option');
-                    optionEl.textContent = option;
-                    optionEl.style.cursor = 'default';
-                    if (index === q.answer) optionEl.classList.add('correct');
-                    if (index === selectedAnswer && selectedAnswer !== q.answer) optionEl.classList.add('incorrect');
-                    elements.optionsEl.appendChild(optionEl);
-                });
-                let feedbackContent = (selectedAnswer === undefined) ? `❓ **Não respondida.**<br><br>` : '';
-                feedbackContent += `A resposta correta é: "${q.options[q.answer]}".<br><br>${q.feedbackCompleto || "Justificativa não disponível."}`;
-                elements.feedbackDisplay.innerHTML = feedbackContent;
-                elements.feedbackDisplay.style.display = 'block';
-                elements.hintDisplay.style.display = 'none';
-                elements.hintBtn.style.display = 'none';
-                elements.difficultyContainer.style.display = 'none';
-                updateNavigationButtons();
-            }
-
-            // --- Conectando os Event Listeners ---
-            elements.loginBtn.addEventListener('click', () => {
-                const username = elements.usernameInput.value.trim();
-                if (username) {
-                    currentUser = { username, email: elements.emailInput.value.trim() || null };
-                    selectedSubject = "all";
-                    elements.loginModal.style.display = 'none';
-                    elements.quizContainer.style.display = 'block';
-                    addTerminalLine(`> Usuário autenticado: ${username}`);
-                    startQuiz();
-                } else {
-                    alert("Digite um nome de usuário!");
-                }
-            });
-
-            elements.portfolioBtn.addEventListener('click', startPortfolioQuiz);
-            elements.dashboardBtn.addEventListener('click', showDashboard);
-            elements.closeDashboardBtn.addEventListener('click', () => {
-                elements.dashboardModal.style.display = 'none';
-            });
-            elements.favoriteBtn.addEventListener('click', toggleFavorite);
-            elements.simuladoBtn.addEventListener('click', () => startSimulado(120));
-            
-            elements.nextBtn.addEventListener('click', () => {
-                if (errosParaRepetir.length > 0) {
-                    const questaoRepetida = errosParaRepetir.shift();
-                    const originalIndex = filteredQuestions.findIndex(q => q.id === questaoRepetida.id);
-                    if (originalIndex !== -1) {
-                        currentQuestionIndex = originalIndex;
-                        userAnswers[currentQuestionIndex] = undefined;
-                        addTerminalLine(`> Refazendo questão...`);
-                        isReviewMode ? loadReviewQuestion() : loadQuestion();
-                        return;
-                    }
-                }
-                if (currentQuestionIndex < filteredQuestions.length - 1) {
-                    currentQuestionIndex++;
-                    isReviewMode ? loadReviewQuestion() : loadQuestion();
-                } else {
-                    isReviewMode ? (elements.quizContainer.style.display = 'none', elements.resultsModal.style.display = 'flex') : finishQuiz();
-                }
-            });
-
-            elements.prevBtn.addEventListener('click', () => {
-                if (currentQuestionIndex > 0) {
-                    currentQuestionIndex--;
-                     isReviewMode ? loadReviewQuestion() : loadQuestion();
-                }
-            });
-            elements.finishQuizBtn.addEventListener('click', finishQuiz);
-            elements.difficultyButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const difficulty = e.target.dataset.difficulty;
-                    const questionId = filteredQuestions[currentQuestionIndex].id;
-                    difficultyRatings[questionId] = difficulty;
-                    addTerminalLine(`> Questão avaliada como: ${difficulty}.`);
-                    elements.difficultyContainer.style.display = 'none';
-                });
-            });
-            elements.hintBtn.addEventListener('click', () => {
-                const q = filteredQuestions[currentQuestionIndex];
-                if (q?.hint) {
-                    elements.hintDisplay.innerHTML = `💡 **Dica:** ${q.hint}`;
-                    elements.hintDisplay.style.display = 'block';
-                } else {
-                    elements.hintDisplay.innerHTML = `Não há dica disponível.`;
-                    elements.hintDisplay.style.display = 'block';
-                }
-            });
-            elements.subjectTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    elements.subjectTabs.forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
-                    selectedSubject = tab.dataset.subject;
-                    addTerminalLine(`> Filtro ativado: ${tab.textContent}`);
-                    startQuiz();
-                });
-            });
-            elements.reviewBtn.addEventListener('click', () => {
-                elements.resultsModal.style.display = 'none';
-                elements.quizContainer.style.display = 'block';
-                startReviewMode();
-            });
-            elements.restartBtn.addEventListener('click', () => {
-                elements.resultsModal.style.display = 'none';
-                elements.loginModal.style.display = 'flex';
-                addTerminalLine('> Reiniciando sistema...');
-            });
-
-            // --- Inicialização da Aplicação ---
-            function initializeQuiz() {
-                try {
-                    loadFromLocalStorage();
-                    questions = questionsData.map((q, index) => ({ ...q, id: `q_${index}` }));
-                    addTerminalLine("> Banco de questões carregado.");
-                    elements.loginModal.style.display = 'flex';
-                    updateLeaderboard();
-                    addTerminalLine("> Aguardando autenticação <span class='blink'>_</span>");
-                } catch (error) {
-                    console.error('Erro ao carregar as questões:', error);
-                    addTerminalLine(`> ERRO FATAL: Não foi possível carregar o banco de questões interno.`);
-                }
-            }
-
-            initializeQuiz();
+    function updateLeaderboard() {
+        elements.scoresList.innerHTML = '';
+        const summaryScores = allScores.map(s => ({ username: s.username, score: s.score, total: s.total })).filter(s => s.total > 0);
+        const topScores = summaryScores.sort((a, b) => b.score - a.score).slice(0, 10);
+        if (topScores.length === 0) {
+            elements.scoresList.innerHTML = '<p>Nenhuma pontuação registrada.</p>';
+            return;
+        }
+        topScores.forEach((item, index) => {
+            const scoreItem = document.createElement('div');
+            scoreItem.className = 'leaderboard-item';
+            scoreItem.innerHTML = `<span>${index + 1}. ${item.username}</span><span>${item.score}/${item.total}</span>`;
+            elements.scoresList.appendChild(scoreItem);
         });
+    }
+
+    function loadQuestion() {
+        if (filteredQuestions.length === 0 || currentQuestionIndex >= filteredQuestions.length) {
+            finishQuiz();
+            return;
+        }
+        const q = filteredQuestions[currentQuestionIndex];
+        elements.questionEl.innerHTML = `[${currentQuestionIndex + 1}/${filteredQuestions.length}] ${q.question}`;
+        elements.optionsEl.innerHTML = '';
+        q.options.forEach((option, index) => {
+            const optionEl = document.createElement('div');
+            optionEl.classList.add('option');
+            optionEl.textContent = option;
+            optionEl.style.cursor = 'pointer';
+            optionEl.addEventListener('click', () => selectAnswer(index));
+            elements.optionsEl.appendChild(optionEl);
+        });
+        elements.feedbackDisplay.style.display = 'none';
+        elements.hintDisplay.style.display = 'none';
+        elements.difficultyContainer.style.display = 'none';
+        elements.hintBtn.style.display = 'block';
+        elements.progressEl.style.width = `${((currentQuestionIndex + 1) / filteredQuestions.length) * 100}%`;
+        updateFavoriteIcon();
+        updateNavigationButtons();
+    }
+
+    function selectAnswer(selectedIndex) {
+        if (userAnswers[currentQuestionIndex] !== undefined) return;
+        userAnswers[currentQuestionIndex] = selectedIndex;
+        const q = filteredQuestions[currentQuestionIndex];
+        const isCorrect = selectedIndex === q.answer;
+        elements.optionsEl.querySelectorAll('.option').forEach(opt => {
+            const newOpt = opt.cloneNode(true);
+            opt.parentNode.replaceChild(newOpt, opt);
+            newOpt.style.cursor = 'default';
+        });
+        if (!isCorrect) agendarRepeticao(q);
+        displayFeedback(selectedIndex);
+        elements.hintBtn.style.display = 'none';
+        elements.difficultyContainer.style.display = 'flex';
+    }
+
+    function toggleFavorite() {
+        const currentQ = filteredQuestions[currentQuestionIndex];
+        if (!currentQ) return;
+        const questionId = currentQ.id;
+        const favoriteIndex = favoriteQuestions.indexOf(questionId);
+        if (favoriteIndex > -1) {
+            favoriteQuestions.splice(favoriteIndex, 1);
+            addTerminalLine(`> Questão [${questionId}] removida do portfólio.`);
+        } else {
+            favoriteQuestions.push(questionId);
+            addTerminalLine(`> Questão [${questionId}] adicionada ao portfólio.`);
+        }
+        localStorage.setItem('quantumQuizFavorites', JSON.stringify(favoriteQuestions));
+        updateFavoriteIcon();
+    }
+
+    function updateFavoriteIcon() {
+        const currentQ = filteredQuestions[currentQuestionIndex];
+        if (elements.favoriteBtn && currentQ) {
+            if (favoriteQuestions.includes(currentQ.id)) {
+                elements.favoriteBtn.classList.add('favorited');
+            } else {
+                elements.favoriteBtn.classList.remove('favorited');
+            }
+        }
+    }
+    
+    function filterQuestionsBySubject() {
+        if (selectedSubject === "portfolio") {
+            filteredQuestions = questions.filter(q => favoriteQuestions.includes(q.id));
+        } else if (selectedSubject === "all") {
+            filteredQuestions = [...questions];
+        } else {
+            filteredQuestions = questions.filter(q => q.subjects && q.subjects.includes(selectedSubject));
+        }
+    }
+
+    function startQuiz() {
+        currentQuestionIndex = 0;
+        isReviewMode = false;
+        errosParaRepetir = [];
+        difficultyRatings = {};
+        
+        filterQuestionsBySubject();
+        
+        // ===================================================================
+        //  LINHA DE CÓDIGO CORRIGIDA <-- ALTERAÇÃO PRINCIPAL
+        // ===================================================================
+        // Agora, embaralhamos a lista filtrada antes de começar
+        filteredQuestions = shuffle(filteredQuestions); 
+        
+        if (filteredQuestions.length > 0) {
+            elements.navigationContainer.style.display = 'flex';
+            userAnswers = Array(filteredQuestions.length).fill(undefined);
+            loadQuestion();
+        } else {
+            elements.questionEl.textContent = selectedSubject === "portfolio" 
+                ? "Você ainda não favoritou nenhuma questão para revisar." 
+                : "Nenhuma questão encontrada para esta matéria.";
+            elements.optionsEl.innerHTML = "";
+            elements.navigationContainer.style.display = 'none';
+        }
+    }
+
+    function startPortfolioQuiz() {
+        const username = elements.usernameInput.value.trim();
+        if (!username) {
+            alert("Por favor, digite um nome de usuário antes de iniciar.");
+            return;
+        }
+        if (favoriteQuestions.length === 0) {
+            alert("Você ainda não favoritou nenhuma questão para revisar!");
+            return;
+        }
+        currentUser = { username, email: elements.emailInput.value.trim() || null };
+        selectedSubject = "portfolio";
+        elements.loginModal.style.display = 'none';
+        elements.quizContainer.style.display = 'block';
+        addTerminalLine(`> Iniciando modo de revisão do Portfólio...`);
+        elements.subjectTabs.forEach(t => t.classList.remove('active'));
+        startQuiz();
+    }
+
+    function finishQuiz() {
+        if(filteredQuestions.length === 0) {
+            elements.quizContainer.style.display = 'none';
+            elements.loginModal.style.display = 'flex';
+            return;
+        }
+        let correctCount = 0;
+        const answerDetails = [];
+        filteredQuestions.forEach((q, index) => {
+            const userAnswer = userAnswers[index];
+            const isCorrect = userAnswer === q.answer;
+            if (isCorrect) correctCount++;
+            answerDetails.push({ questionId: q.id, subjects: q.subjects || [], userAnswer, correctAnswer: q.answer, isCorrect });
+        });
+        const total = filteredQuestions.length;
+        const percentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+        elements.resultStatsEl.innerHTML = `Você acertou ${correctCount} de ${total} questões.<br> (${percentage}%)`;
+        if(total > 0 && selectedSubject !== 'portfolio') { // Não salva score do modo portfólio
+            saveDetailedScore(correctCount, total, answerDetails);
+        }
+        elements.quizContainer.style.display = 'none';
+        elements.resultsModal.style.display = 'flex';
+    }
+    
+    function saveDetailedScore(score, total, details) {
+        if (!currentUser) return;
+        const newScore = { username: currentUser.username, score, total, details, date: new Date().toISOString(), subject: selectedSubject };
+        allScores.push(newScore);
+        localStorage.setItem('quantumQuizScores', JSON.stringify(allScores));
+        updateLeaderboard();
+    }
+
+    function showDashboard() {
+        const username = elements.usernameInput.value.trim();
+        if (!username) {
+            alert('Por favor, digite seu nome de usuário para ver o desempenho.');
+            return;
+        }
+        const userScores = allScores.filter(s => s.username === username);
+        if (userScores.length === 0) {
+            elements.dashboardStatsEl.innerHTML = '<p>Nenhum dado de desempenho encontrado. Complete um quiz primeiro!</p>';
+        } else {
+            const stats = calculateStats(userScores);
+            displayStats(stats);
+        }
+        elements.dashboardModal.style.display = 'flex';
+    }
+
+    function getSubjectName(subjectKey) {
+        const tab = document.querySelector(`.subject-button[data-subject="${subjectKey}"]`);
+        return tab ? tab.textContent : subjectKey;
+    }
+
+    function calculateStats(userScores) {
+        const subjectStats = {};
+        let totalCorrect = 0;
+        let totalAttempted = 0;
+        userScores.forEach(score => {
+            score.details.forEach(detail => {
+                if(detail.userAnswer === undefined) return;
+                totalAttempted++;
+                if(detail.isCorrect) totalCorrect++;
+                if(detail.subjects) {
+                    detail.subjects.forEach(subject => {
+                        if (!subjectStats[subject]) {
+                            subjectStats[subject] = { correct: 0, total: 0, name: getSubjectName(subject) };
+                        }
+                        subjectStats[subject].total++;
+                        if (detail.isCorrect) subjectStats[subject].correct++;
+                    });
+                }
+            });
+        });
+        const overallPercentage = totalAttempted > 0 ? (totalCorrect / totalAttempted) * 100 : 0;
+        return {
+            overall: { correct: totalCorrect, total: totalAttempted, percentage: overallPercentage.toFixed(1) },
+            bySubject: subjectStats
+        };
+    }
+
+    function displayStats(stats) {
+        let tableHTML = `<p><strong>Desempenho Geral:</strong> ${stats.overall.correct} de ${stats.overall.total} acertos (${stats.overall.percentage}%)</p><table><thead><tr><th>Matéria</th><th>Acertos / Total</th><th>Percentual</th></tr></thead><tbody>`;
+        const sortedSubjects = Object.entries(stats.bySubject).sort(([,a], [,b]) => a.name.localeCompare(b.name));
+        for (const [subjectKey, data] of sortedSubjects) {
+            const percentage = data.total > 0 ? ((data.correct / data.total) * 100).toFixed(1) : 0;
+            tableHTML += `<tr><td>${data.name}</td><td>${data.correct} / ${data.total}</td><td><div class="progress-bar-stat"><div class="progress-fill" style="width: ${percentage}%;">${percentage}%</div></div></td></tr>`;
+        }
+        tableHTML += `</tbody></table>`;
+        elements.dashboardStatsEl.innerHTML = tableHTML;
+    }
+    
+    function startSimulado(numQuestoes) {
+        const username = elements.usernameInput.value.trim();
+        if (!username) {
+            alert("Por favor, digite um nome de usuário antes de iniciar o simulado.");
+            return;
+        }
+        if (questions.length < numQuestoes) {
+            alert(`Não há questões suficientes. Total: ${questions.length}`);
+            return;
+        }
+        currentUser = { username, email: elements.emailInput.value.trim() || null };
+        isReviewMode = false;
+        errosParaRepetir = [];
+        selectedSubject = 'all';
+        filteredQuestions = shuffle([...questions]).slice(0, numQuestoes);
+        currentQuestionIndex = 0;
+        userAnswers = Array(filteredQuestions.length).fill(undefined);
+        elements.loginModal.style.display = 'none';
+        elements.quizContainer.style.display = 'block';
+        addTerminalLine(`> Simulado de ${numQuestoes} questões iniciado...`);
+        loadQuestion();
+        elements.subjectTabs.forEach(t => t.classList.remove('active'));
+        document.querySelector('.subject-button[data-subject="all"]').classList.add('active');
+    }
+    
+    function displayFeedback(selectedIndex) {
+        const q = filteredQuestions[currentQuestionIndex];
+        const isCorrect = selectedIndex === q.answer;
+        elements.optionsEl.querySelectorAll('.option').forEach((option, index) => {
+            if (index === q.answer) option.classList.add('correct');
+            // Correção para não marcar incorreto se acertar
+            if (index === selectedIndex && !isCorrect) {
+                option.classList.add('incorrect', 'selected');
+            } else if (index === selectedIndex && isCorrect) {
+                 option.classList.add('selected');
+            }
+        });
+        let feedbackContent = isCorrect ? `✅ **Correto!**<br><br>` : `❌ **Incorreto.**<br><br>`;
+        feedbackContent += `A resposta correta é: "${q.options[q.answer]}".<br><br>${q.feedbackCompleto || "Justificativa не disponível."}`;
+        elements.feedbackDisplay.innerHTML = feedbackContent;
+        elements.feedbackDisplay.style.display = 'block';
+    }
+
+    function agendarRepeticao(question) {
+        if (!errosParaRepetir.some(item => item.id === question.id)) {
+            addTerminalLine(`> Questão [${question.id}] agendada para revisão.`);
+            setTimeout(() => {errosParaRepetir.push(question);}, 60000);
+        }
+    }
+    
+    function updateNavigationButtons() {
+        elements.prevBtn.disabled = currentQuestionIndex === 0;
+        if (isReviewMode) {
+            elements.nextBtn.textContent = (currentQuestionIndex === filteredQuestions.length - 1) ? 'Voltar' : 'Próxima →';
+        } else {
+            elements.nextBtn.textContent = (currentQuestionIndex === filteredQuestions.length - 1 && errosParaRepetir.length === 0) ? 'Finalizar' : 'Próxima →';
+        }
+        elements.finishQuizBtn.style.display = isReviewMode ? 'none' : 'block';
+    }
+
+    function startReviewMode() {
+        isReviewMode = true;
+        currentQuestionIndex = 0;
+        loadReviewQuestion();
+    }
+
+    function loadReviewQuestion() {
+        if (currentQuestionIndex >= filteredQuestions.length) {
+            elements.quizContainer.style.display = 'none';
+            elements.resultsModal.style.display = 'flex';
+            return;
+        }
+        const q = filteredQuestions[currentQuestionIndex];
+        elements.questionEl.textContent = `[Revisão ${currentQuestionIndex + 1}/${filteredQuestions.length}] ${q.question}`;
+        elements.optionsEl.innerHTML = '';
+        const selectedAnswer = userAnswers[currentQuestionIndex];
+        q.options.forEach((option, index) => {
+            const optionEl = document.createElement('div');
+            optionEl.classList.add('option');
+            optionEl.textContent = option;
+            optionEl.style.cursor = 'default';
+            if (index === q.answer) optionEl.classList.add('correct');
+            if (index === selectedAnswer && selectedAnswer !== q.answer) optionEl.classList.add('incorrect');
+            elements.optionsEl.appendChild(optionEl);
+        });
+        let feedbackContent = (selectedAnswer === undefined) ? `❓ **Não respondida.**<br><br>` : '';
+        feedbackContent += `A resposta correta é: "${q.options[q.answer]}".<br><br>${q.feedbackCompleto || "Justificativa não disponível."}`;
+        elements.feedbackDisplay.innerHTML = feedbackContent;
+        elements.feedbackDisplay.style.display = 'block';
+        elements.hintDisplay.style.display = 'none';
+        elements.hintBtn.style.display = 'none';
+        elements.difficultyContainer.style.display = 'none';
+        updateNavigationButtons();
+    }
+
+    // --- Conectando os Event Listeners ---
+    elements.loginBtn.addEventListener('click', () => {
+        const username = elements.usernameInput.value.trim();
+        if (username) {
+            currentUser = { username, email: elements.emailInput.value.trim() || null };
+            selectedSubject = "all";
+            elements.loginModal.style.display = 'none';
+            elements.quizContainer.style.display = 'block';
+            addTerminalLine(`> Usuário autenticado: ${username}`);
+            startQuiz();
+        } else {
+            alert("Digite um nome de usuário!");
+        }
+    });
+
+    elements.portfolioBtn.addEventListener('click', startPortfolioQuiz);
+    elements.dashboardBtn.addEventListener('click', showDashboard);
+    elements.closeDashboardBtn.addEventListener('click', () => {
+        elements.dashboardModal.style.display = 'none';
+    });
+    elements.favoriteBtn.addEventListener('click', toggleFavorite);
+    elements.simuladoBtn.addEventListener('click', () => startSimulado(120));
+    
+    elements.nextBtn.addEventListener('click', () => {
+        if (!isReviewMode && errosParaRepetir.length > 0) {
+            const questaoRepetida = errosParaRepetir.shift();
+            filteredQuestions.push(questaoRepetida); // Adiciona a questão errada ao final da lista
+            userAnswers.push(undefined); // Adiciona um espaço para a nova resposta
+            addTerminalLine(`> Questão errada [${questaoRepetida.id}] será reapresentada.`);
+        }
+
+        if (currentQuestionIndex < filteredQuestions.length - 1) {
+            currentQuestionIndex++;
+            isReviewMode ? loadReviewQuestion() : loadQuestion();
+        } else {
+            isReviewMode ? (elements.quizContainer.style.display = 'none', elements.resultsModal.style.display = 'flex') : finishQuiz();
+        }
+    });
+
+    elements.prevBtn.addEventListener('click', () => {
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+             isReviewMode ? loadReviewQuestion() : loadQuestion();
+        }
+    });
+    elements.finishQuizBtn.addEventListener('click', finishQuiz);
+    elements.difficultyButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const difficulty = e.target.dataset.difficulty;
+            const questionId = filteredQuestions[currentQuestionIndex].id;
+            difficultyRatings[questionId] = difficulty;
+            addTerminalLine(`> Questão avaliada como: ${difficulty}.`);
+            elements.difficultyContainer.style.display = 'none';
+        });
+    });
+    elements.hintBtn.addEventListener('click', () => {
+        const q = filteredQuestions[currentQuestionIndex];
+        if (q?.hint) {
+            elements.hintDisplay.innerHTML = `💡 **Dica:** ${q.hint}`;
+            elements.hintDisplay.style.display = 'block';
+        } else {
+            elements.hintDisplay.innerHTML = `Não há dica disponível.`;
+            elements.hintDisplay.style.display = 'block';
+        }
+    });
+    elements.subjectTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            elements.subjectTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            selectedSubject = tab.dataset.subject;
+            addTerminalLine(`> Filtro ativado: ${tab.textContent}`);
+            startQuiz();
+        });
+    });
+    elements.reviewBtn.addEventListener('click', () => {
+        elements.resultsModal.style.display = 'none';
+        elements.quizContainer.style.display = 'block';
+        startReviewMode();
+    });
+    elements.restartBtn.addEventListener('click', () => {
+        elements.resultsModal.style.display = 'none';
+        elements.loginModal.style.display = 'flex';
+        addTerminalLine('> Reiniciando sistema...');
+    });
+
+    // --- Inicialização da Aplicação ---
+    function initializeQuiz() {
+        try {
+            // Nota: a variável 'questionsData' já está no escopo, vinda do HTML
+            loadFromLocalStorage();
+            questions = questionsData.map((q, index) => ({ ...q, id: `q_${index}` }));
+            addTerminalLine("> Banco de questões carregado.");
+            elements.loginModal.style.display = 'flex';
+            updateLeaderboard();
+            addTerminalLine("> Aguardando autenticação <span class='blink'>_</span>");
+        } catch (error) {
+            console.error('Erro ao carregar as questões:', error);
+            addTerminalLine(`> ERRO FATAL: Não foi possível carregar o banco de questões interno.`);
+        }
+    }
+
+    initializeQuiz();
+});
     </script>
 </body>
 </html>
