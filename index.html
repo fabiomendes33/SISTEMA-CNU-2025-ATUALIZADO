@@ -44,9 +44,10 @@
         margin: 2rem auto;
         padding: 2rem;
         border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
         position: relative;
-        background: linear-gradient(135deg, #0a192f, #1e3a8a);
+        background: linear-gradient(135deg, #1e3a8a, #3b82f6, #60a5fa);
+        border-radius: 12px;
       }
 
       h1 {
@@ -63,36 +64,48 @@
         gap: 1rem;
         margin-bottom: 2rem;
         flex-wrap: wrap;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 1.5rem;
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
       }
 
-      .subject-button,
-      .action-button {
+      .subject-button {
         transition: all 0.3s ease-in-out;
         font-family: "Orbitron", sans-serif;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       }
+
       .subject-button:hover,
-      .subject-button.active,
-      .action-button:hover {
+      .subject-button.active {
         transform: scale(1.05) translateY(-3px);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3),
-          0 4px 6px -2px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.8);
       }
       .subject-button.active {
         border: 2px solid var(--neon-pink);
       }
 
       .question-container {
-        background: rgba(10, 25, 47, 0.8);
+        background: rgba(10, 25, 47, 0.9);
         padding: 2rem;
         border-left: 4px solid var(--matrix-green);
         margin-bottom: 2rem;
         position: relative;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       }
+
       .question-text {
         font-size: 1.4rem;
         line-height: 1.5;
         padding-right: 3rem;
+        color: #e0f2fe; /* Azul muito claro para melhor legibilidade */
       }
+
       .options-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -103,33 +116,64 @@
         padding: 1.2rem;
         background: rgba(15, 10, 24, 0.7);
         border: 1px solid var(--cyber-purple);
-        color: white;
+        color: #e0f2fe; /* Azul claro para melhor legibilidade */
         cursor: pointer;
         transition: all 0.3s;
       }
+
       .option:hover {
         background: rgba(135, 0, 255, 0.2);
         border-color: var(--neon-pink);
       }
       .option.correct,
       .option.selected.correct {
-        background: rgba(0, 255, 65, 0.4);
-        border-color: var(--matrix-green);
+        background: rgba(0, 255, 65, 0.2); /* Verde matrix com transparência */
+        border-color: #00ff41;
+        color: #00ff41; /* Verde matrix para o texto */
+        text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
       }
+
       .option.selected.incorrect {
         background: rgba(255, 0, 0, 0.4);
         border-color: #ff0000;
+        color: #ff6b6b;
       }
       .feedback,
       .hint-display {
         margin-top: 1.5rem;
         padding: 1rem;
-        background: rgba(10, 25, 47, 0.9);
-        border-left: 4px solid var(--neon-pink);
+        background: rgba(10, 30, 20, 0.9);
+        border-left: 4px solid #00ff41; /* Verde matrix brilhante */
         white-space: pre-wrap;
         display: none;
+        color: #00ff41; /* Verde matrix para o texto */
+        line-height: 1.5;
+        border-radius: 4px;
+        text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+      }
+      .hint-display {
+        border-left-color: #adff2f; /* Verde neon para a dica */
+        color: #adff2f;
+        text-shadow: 0 0 5px rgba(173, 255, 47, 0.5);
+      }
+      .feedback,
+      .hint-display,
+      .option.correct {
+        box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
       }
 
+      .hint-button-container button {
+        background: linear-gradient(to right, #00ff41, #adff2f) !important;
+        border: 1px solid #00ff41;
+        color: #0a192f;
+        font-weight: bold;
+      }
+
+      .hint-button-container button:hover {
+        background: linear-gradient(to right, #adff2f, #00ff41) !important;
+        box-shadow: 0 0 15px rgba(0, 255, 65, 0.6);
+        transform: translateY(-2px);
+      }
       .navigation {
         display: flex;
         justify-content: space-between;
@@ -143,7 +187,9 @@
         background: rgba(10, 25, 47, 0.7);
         height: 6px;
         margin-bottom: 2rem;
+        border-radius: 3px;
       }
+
       .progress-bar {
         height: 100%;
         background: linear-gradient(
@@ -153,6 +199,7 @@
         );
         width: 0%;
         transition: width 0.5s;
+        border-radius: 3px;
       }
       .hacker-terminal {
         background: rgba(0, 0, 0, 0.7);
@@ -163,6 +210,7 @@
         color: var(--matrix-green);
         height: 100px;
         overflow-y: auto;
+        border-radius: 6px;
       }
       .terminal-line {
         margin: 0;
@@ -184,7 +232,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: transparent;
+        background: linear-gradient(135deg, #87ceeb, #b0e2ff, #e6f3ff);
         z-index: 1000;
         justify-content: center;
         align-items: center;
@@ -192,19 +240,24 @@
 
       .login-box,
       .results-box {
-        background: linear-gradient(to bottom, #ffffff, #f7f9fc);
+        background: rgba(255, 255, 255, 0.95);
         color: var(--dark-text);
-        border: 1px solid #e0e0e0;
+        border: 1px solid rgba(255, 255, 255, 0.8);
         border-radius: 16px;
         padding: 2.5rem;
         width: 450px;
         max-width: 95%;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         text-align: center;
+        backdrop-filter: blur(10px);
       }
 
       .login-logo {
-        background-color: var(--quantum-blue);
+        background: linear-gradient(
+          135deg,
+          var(--primary-blue),
+          var(--secondary-blue)
+        );
         color: white;
         padding: 0.5rem 1rem;
         border-radius: 8px;
@@ -212,6 +265,7 @@
         font-size: 1.5rem;
         display: inline-block;
         margin-bottom: 1rem;
+        font-weight: bold;
       }
 
       .login-box h2,
@@ -229,16 +283,19 @@
         width: 100%;
         padding: 0.9rem;
         margin-bottom: 1.2rem;
-        background: var(--light-gray-bg);
+        background: rgba(255, 255, 255, 0.8);
         border: 1px solid #ccc;
         border-radius: 8px;
         color: var(--dark-text);
         box-sizing: border-box;
+        transition: all 0.3s ease;
       }
+
       .login-input:focus {
         outline: none;
         border-color: var(--primary-blue);
         box-shadow: 0 0 0 3px rgba(0, 91, 234, 0.2);
+        background: white;
       }
 
       .btn-solid {
@@ -259,6 +316,7 @@
         width: 100%;
         box-shadow: 0 4px 15px rgba(0, 91, 234, 0.3);
       }
+
       .btn-solid:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(0, 91, 234, 0.4);
@@ -275,7 +333,10 @@
         margin-top: 2rem;
         padding: 1rem;
         border: 1px solid var(--matrix-green);
+        background: rgba(10, 25, 47, 0.8);
+        border-radius: 8px;
       }
+
       .leaderboard h3 {
         color: var(--neon-pink);
         border-bottom: 1px solid var(--matrix-green);
@@ -301,9 +362,13 @@
       .difficulty-rating p {
         margin-bottom: 0;
         font-family: "Orbitron", sans-serif;
-        color: var(--matrix-green);
+        color: #00ff41; /* Verde matrix */
+        text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
       }
-
+      .difficulty-rating button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+      }
       #dashboard-stats {
         text-align: left;
         max-height: 60vh;
@@ -560,12 +625,7 @@
         >
           Informatica
         </div>
-        <div
-          class="subject-button p-3 rounded-lg shadow-lg text-white font-semibold cursor-pointer bg-gradient-to-br from-slate-500 to-slate-700"
-          data-subject="Simulado2025 CNU"
-        >
-          Simulado2025CNU
-        </div>
+
         <button
           class="action-button p-3 rounded-lg shadow-lg text-white font-semibold cursor-pointer bg-gradient-to-br from-slate-600 to-slate-800"
           id="simulado-btn"
